@@ -1,0 +1,276 @@
+{
+  "version": "1.0",
+  "actualizado": "2025-06-09",
+  "ciudad": "Santa Fe Capital",
+  "provincia": "Santa Fe",
+  "pais": "Argentina",
+
+  "excursiones": [
+    {
+      "id": "costalitoral",
+      "nombre": "Costalitoral",
+      "tipo": "Paseo en barco",
+      "descripcion": "Santa Fe contada desde el río. Recorrés la historia, la naturaleza y los paisajes con una vista única.",
+      "duracion": "1:30 hs",
+      "capacidad": 90,
+      "ubicacion": "Dique 1, Puerto de Santa Fe",
+      "telefono": "342 5107970",
+      "whatsapp": "5493425107970",
+      "instagram": "@costalitoral_",
+      "precio": "$$",
+      "destacado": true,
+      "afiliado": true,
+      "puntos_interes": [
+        "Puerto de Ultramar",
+        "Canal de acceso a Paraná",
+        "Alto Verde",
+        "Museo de la Constitución",
+        "Isla con flora y fauna",
+        "Laguna Setúbal",
+        "Puente Colgante"
+      ],
+      "tags": ["río", "barco", "familia", "turismo", "paraná"]
+    }
+  ],
+
+  "museos": [
+    {
+      "id": "manzana-jesuitica",
+      "nombre": "Manzana Jesuítica",
+      "tipo": "Patrimonio histórico",
+      "descripcion": "Sitio histórico, museo y colegio jesuita más antiguo del país. Patrimonio inigualable.",
+      "direccion": "San Martín 1540",
+      "telefono": null,
+      "web": "www.santafeturismo.tur.ar",
+      "instagram": "@manzanajesuiticadesantafe",
+      "facebook": "ManzanajesuiticadeSantaFe",
+      "precio": "Entrada libre y gratuita",
+      "horario": "Consultar",
+      "destacado": true,
+      "tags": ["historia", "patrimonio", "gratuito", "jesuita"]
+    },
+    {
+      "id": "museo-constitucion",
+      "nombre": "Museo de la Constitución",
+      "tipo": "Museo histórico",
+      "descripcion": "Donde se sancionó la Constitución Nacional Argentina en 1853.",
+      "direccion": "Av. Circunvalación y 1° de Mayo",
+      "telefono": "342 5118351",
+      "email_reservas": "museo.constitucion@santafeciudad.gov.ar",
+      "email_turnos": "turnos.museo@gmail.com",
+      "precio": "Consultar",
+      "horario": "Con turno previo",
+      "destacado": true,
+      "tags": ["historia", "constitución", "patrimonio"]
+    },
+    {
+      "id": "museo-bellas-artes",
+      "nombre": "Museo de Bellas Artes Rosa Galisteo de Rodríguez",
+      "tipo": "Museo de arte",
+      "descripcion": "El más importante de la provincia. Colección permanente de arte argentino.",
+      "precio": "Entrada libre y gratuita",
+      "destacado": true,
+      "tags": ["arte", "cultura", "gratuito"]
+    }
+  ],
+
+  "naturaleza": [
+    {
+      "id": "jardin-botanico",
+      "nombre": "Jardín Botánico",
+      "tipo": "Espacio verde",
+      "descripcion": "Visitas guiadas gratuitas. Ideal para ir con chicos o descansar del centro.",
+      "direccion": "Gorriti 3900",
+      "telefono": "342 4578410",
+      "email": "jardinbotanicosantafe@gmail.com",
+      "instagram": "@jardinbotanicosantafe",
+      "precio": "Gratuito",
+      "horario": "Consultar",
+      "tags": ["naturaleza", "gratuito", "familia", "plantas"]
+    },
+    {
+      "id": "reserva-ecologica-unl",
+      "nombre": "Reserva Ecológica UNL",
+      "tipo": "Reserva natural",
+      "descripcion": "Reserva ecológica sobre la Costanera Este.",
+      "direccion": "Costanera Este",
+      "telefono": "342 4493611",
+      "email": "santafe@habitatydesarrollo.org.ar",
+      "precio": "Gratuito",
+      "tags": ["naturaleza", "ecología", "gratuito", "costanera"]
+    },
+    {
+      "id": "reserva-natural-oeste",
+      "nombre": "Reserva Natural Urbana del Oeste",
+      "tipo": "Reserva natural",
+      "descripcion": "Visitas guiadas y gratuitas.",
+      "direccion": "Gorostiaga 4659",
+      "email": "reservadeloeste@santafeciudad.gov.ar",
+      "precio": "Gratuito",
+      "tags": ["naturaleza", "gratuito", "oeste"]
+    }
+  ],
+
+  "gastronomia": [
+    {
+      "id": "costalitoral-restaurant",
+      "nombre": "Costalitoral Restaurant",
+      "tipo": "Gastronomía litoraleña",
+      "descripcion": "Disfrutar la gastronomía santafesina con las mejores vistas desde amplios salones.",
+      "direccion": "Puerto de Santa Fe, Dique 1",
+      "telefono": "342 5107970",
+      "whatsapp": "5493425107970",
+      "instagram": "@costalitoral_",
+      "precio": "$$",
+      "especialidad": ["surubí", "dorado", "cocina litoraleña"],
+      "vista_rio": true,
+      "destacado": true,
+      "afiliado": true,
+      "tags": ["pescado", "río", "vista", "surubí", "puerto"]
+    },
+    {
+      "id": "mercado-norte",
+      "nombre": "Mercado Norte",
+      "tipo": "Mercado gastronómico",
+      "descripcion": "Gastronomía variada, productos regionales y chipá fresco.",
+      "direccion": "Santiago del Estero 3166",
+      "telefono": "342 4566728",
+      "web": "www.mercadonortesf.com.ar",
+      "instagram": "@mercadonortesf",
+      "facebook": "mercadonorte.santafe",
+      "precio": "$",
+      "especialidad": ["chipá", "productos regionales", "variado"],
+      "tags": ["mercado", "local", "chipá", "económico"]
+    }
+  ],
+
+  "actividades": [
+    {
+      "id": "bus-turistico",
+      "nombre": "Bus Turístico",
+      "tipo": "Tour guiado",
+      "descripcion": "Recorrido turístico por los principales puntos de la ciudad.",
+      "ubicacion": "Cabecera Dique I, Puerto de Santa Fe",
+      "telefono": "342 4454567",
+      "instagram": "@busturisticook",
+      "precio": "Consultar",
+      "tags": ["tour", "ciudad", "transporte", "turismo"]
+    },
+    {
+      "id": "las-bicis",
+      "nombre": "Las Bicis Santa Fe Capital",
+      "tipo": "Transporte público / turismo",
+      "descripcion": "Recorridos turísticos en bici. Sistema de Transporte Público.",
+      "app_android": true,
+      "app_ios": true,
+      "precio": "Consultar",
+      "tags": ["bici", "transporte", "turismo", "ecológico"]
+    },
+    {
+      "id": "paseo-cerveceria",
+      "nombre": "Paseo de la Cervecería Santa Fe",
+      "tipo": "Tour industrial",
+      "descripcion": "Recorrido por la fábrica de la cerveza más icónica del litoral.",
+      "direccion": "Calchines 1401",
+      "telefono": "342 6123666",
+      "web": "www.paseodelacerveceria.com.ar",
+      "precio": "Consultar",
+      "destacado": true,
+      "tags": ["cerveza", "tour", "industria", "único"]
+    },
+    {
+      "id": "planetario-code",
+      "nombre": "Planetario, Observatorio y Museo del Espacio CODE",
+      "tipo": "Ciencia y tecnología",
+      "descripcion": "Visitas guiadas, observatorio y museo interactivo.",
+      "direccion": "Av. Almirante G. Brown 4998",
+      "telefono": "342 5001236",
+      "email": "sede.social.code@gmail.com",
+      "precio": "Consultar",
+      "tags": ["ciencia", "espacio", "familia", "educación"]
+    }
+  ],
+
+  "paseos_turisticos": [
+    {
+      "id": "paseo-peatonal",
+      "nombre": "Paseo Peatonal",
+      "tipo": "Paseo guiado gratuito",
+      "descripcion": "Recorrido guiado por la peatonal del centro.",
+      "precio": "Gratuito"
+    },
+    {
+      "id": "paseo-boulevard",
+      "nombre": "Paseo Boulevard",
+      "tipo": "Paseo guiado gratuito",
+      "descripcion": "Recorrido por el histórico Bulevar Gálvez.",
+      "precio": "Gratuito"
+    },
+    {
+      "id": "casco-historico",
+      "nombre": "Casco Histórico",
+      "tipo": "Paseo guiado gratuito",
+      "descripcion": "Recorrido por el casco histórico de la ciudad.",
+      "precio": "Gratuito"
+    },
+    {
+      "id": "basilica-guadalupe",
+      "nombre": "Basílica de Guadalupe",
+      "tipo": "Paseo guiado gratuito",
+      "descripcion": "Visita guiada a la Basílica.",
+      "precio": "Gratuito"
+    },
+    {
+      "id": "paseo-puerto",
+      "nombre": "Paseo del Puerto",
+      "tipo": "Paseo guiado gratuito",
+      "descripcion": "Recorrido por el Puerto de Santa Fe.",
+      "precio": "Gratuito"
+    },
+    {
+      "id": "paseo-costanera",
+      "nombre": "Paseo Costanera",
+      "tipo": "Paseo guiado gratuito",
+      "descripcion": "Recorrido por la Costanera Este.",
+      "precio": "Gratuito"
+    },
+    {
+      "id": "paseo-cementerio",
+      "nombre": "Paseo Cementerio",
+      "tipo": "Paseo guiado gratuito",
+      "descripcion": "Recorrido patrimonial por el cementerio histórico.",
+      "precio": "Gratuito"
+    }
+  ],
+
+  "centros_informacion": [
+    {
+      "id": "terminal-omnibus",
+      "nombre": "Centro de Información Turística — Terminal de Ómnibus",
+      "direccion": "Belgrano 2910",
+      "telefono": "(0342) 4574124 / 28",
+      "horario": "Consultar"
+    },
+    {
+      "id": "peatonal-centro",
+      "nombre": "Centro de Información Turística — Peatonal",
+      "direccion": "San Martín 2020, frente al Teatro Municipal 1° de Mayo",
+      "whatsapp": "(0342) 154063525",
+      "horario": "Consultar"
+    },
+    {
+      "id": "puerto",
+      "nombre": "Centro de Información Turística — Puerto",
+      "direccion": "Cabecera Dique I, Puerto de Santa Fe",
+      "telefono": "(0342) 4571512",
+      "horario": "Consultar"
+    }
+  ],
+
+  "chatbot_turismo": {
+    "nombre": "Chatbot oficial de Turismo Santa Fe Ciudad",
+    "plataforma": "WhatsApp",
+    "numero": "342 4063525",
+    "descripcion": "Consultá en el momento que quieras por actividades y espacios para disfrutar."
+  }
+}
