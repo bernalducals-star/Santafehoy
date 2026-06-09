@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Santa Fe Hoy · Guía Turística Digital</title>
+<meta name="description" content="La guía turística digital de Santa Fe Capital. Eventos, restaurantes, excursiones y tips locales. Todo lo que pasa hoy en Santa Fe.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --verde: #1a5c3a;
+  --verde-oscuro: #0f3d26;
+  --dorado: #e8a020;
+  --dorado-claro: #f5c85a;
+  --arena: #faf7f2;
+  --blanco: #ffffff;
+  --texto: #1a1a1a;
+  --gris: #6b7280;
+  --gris-claro: #f3f0eb;
+  --borde: rgba(0,0,0,0.07);
+  --sombra: 0 2px 16px rgba(0,0,0,0.08);
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Plus Jakarta Sans',sans-serif; background:var(--arena); color:var(--texto); overflow-x:hidden; }
+
+/* HEADER */
+.header {
+  position:sticky; top:0; z-index:200;
+  background:rgba(250,247,242,0.96);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--borde);
+  padding:0.85rem 1.2rem;
+  display:flex; align-items:center; justify-content:space-between;
+}
+.logo-svg { display:flex; align-items:center; gap:9px; text-decoration:none; }
+.logo-title { font-weight:700; font-size:1.1rem; line-height:1; }
+.logo-title .sf { color:var(--verde-oscuro); }
+.logo-title .hoy { color:var(--dorado); }
+.logo-sub { font-size:0.48rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--verde); margin-top:2px; font-weight:600; }
+.btn-sm { background:var(--verde); color:white; border:none; padding:0.42rem 0.85rem; border-radius:100px; font-size:0.7rem; font-weight:600; cursor:pointer; font-family:inherit; }
+
+/* HERO */
+.hero {
+  background:var(--verde-oscuro); padding:2.8rem 1.2rem 2.2rem;
+  position:relative; overflow:hidden; min-height:270px;
+  display:flex; flex-direction:column; justify-content:flex-end;
+}
+.hero::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 100% 80% at -10% 110%, rgba(26,92,58,0.7) 0%, transparent 55%),
+              radial-gradient(ellipse 60% 50% at 110% -10%, rgba(232,160,32,0.25) 0%, transparent 50%);
+}
+.hero-eyebrow { font-size:0.63rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--dorado-claro); margin-bottom:0.6rem; position:relative; display:flex; align-items:center; gap:0.5rem; }
+.hero-eyebrow::before { content:''; display:block; width:20px; height:1px; background:var(--dorado); }
+.hero h1 { font-family:'Playfair Display',serif; font-size:clamp(2.2rem,9vw,3.8rem); color:white; line-height:1.08; position:relative; margin-bottom:0.9rem; }
+.hero h1 em { font-style:italic; color:var(--dorado); }
+.hero-desc { font-size:0.86rem; color:rgba(255,255,255,0.62); line-height:1.6; max-width:300px; position:relative; margin-bottom:1.6rem; }
+.hero-pills { display:flex; gap:0.5rem; flex-wrap:wrap; position:relative; }
+.pill { background:rgba(255,255,255,0.11); border:1px solid rgba(255,255,255,0.18); color:white; font-size:0.7rem; font-weight:500; padding:0.32rem 0.75rem; border-radius:100px; cursor:pointer; transition:background 0.15s; text-decoration:none; }
+.pill:hover, .pill.active { background:var(--dorado); border-color:var(--dorado); color:var(--verde-oscuro); }
+
+/* CLIMA */
+.clima-strip { background:var(--verde); padding:0.7rem 1.2rem; display:flex; align-items:center; justify-content:space-between; }
+.clima-left { display:flex; align-items:center; gap:0.7rem; }
+.clima-temp { font-size:1.5rem; font-weight:700; color:white; line-height:1; }
+.clima-desc { font-size:0.7rem; color:rgba(255,255,255,0.8); font-weight:500; }
+.clima-ciudad { font-size:0.58rem; color:rgba(255,255,255,0.5); letter-spacing:0.1em; text-transform:uppercase; }
+.clima-datos { display:flex; gap:1rem; }
+.clima-dato { display:flex; flex-direction:column; align-items:center; }
+.clima-dato span:first-child { font-size:0.58rem; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:0.07em; }
+.clima-dato span:last-child { font-size:0.76rem; font-weight:600; color:white; }
+
+/* SECTIONS */
+.section { padding:1.8rem 1.2rem; }
+.section+.section { padding-top:0; }
+.sec-header { display:flex; align-items:baseline; justify-content:space-between; margin-bottom:1.2rem; }
+.sec-label { font-size:0.58rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--verde); font-weight:600; display:block; margin-bottom:0.3rem; }
+.sec-title { font-family:'Playfair Display',serif; font-size:1.45rem; color:var(--verde-oscuro); line-height:1.1; }
+.sec-link { font-size:0.7rem; color:var(--verde); font-weight:600; text-decoration:none; white-space:nowrap; }
+.divider { height:1px; background:var(--borde); margin:0 1.2rem; }
+.badge-live { display:inline-block; background:var(--dorado); color:var(--verde-oscuro); font-size:0.52rem; font-weight:700; letter-spacing:0.08em; padding:0.1rem 0.45rem; border-radius:100px; text-transform:uppercase; vertical-align:middle; margin-left:0.4rem; }
+
+/* EVENTOS */
+.eventos-list { display:flex; flex-direction:column; gap:0.65rem; }
+.evento-card { background:white; border-radius:14px; border:1px solid var(--borde); overflow:hidden; display:flex; transition:transform 0.15s; cursor:pointer; text-decoration:none; }
+.evento-card:hover { transform:translateY(-2px); box-shadow:var(--sombra); }
+.evento-fecha { width:52px; flex-shrink:0; background:var(--verde-oscuro); display:flex; flex-direction:column; align-items:center; justify-content:center; padding:0.8rem 0; }
+.evento-dia { font-size:1.35rem; font-weight:700; color:white; line-height:1; }
+.evento-mes { font-size:0.52rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--dorado); font-weight:600; margin-top:2px; }
+.evento-body { padding:0.82rem 1rem; flex:1; }
+.evento-tag { font-size:0.56rem; letter-spacing:0.1em; text-transform:uppercase; background:rgba(26,92,58,0.08); color:var(--verde); padding:0.18rem 0.52rem; border-radius:100px; display:inline-block; margin-bottom:0.32rem; font-weight:600; }
+.evento-nombre { font-weight:600; font-size:0.87rem; color:var(--texto); line-height:1.3; margin-bottom:0.22rem; }
+.evento-lugar { font-size:0.7rem; color:var(--gris); }
+.spinner { width:26px; height:26px; border:3px solid var(--gris-claro); border-top-color:var(--verde); border-radius:50%; animation:spin 0.8s linear infinite; margin:0 auto 0.8rem; }
+@keyframes spin { to { transform:rotate(360deg); } }
+.eventos-loading { text-align:center; padding:1.8rem; color:var(--gris); font-size:0.82rem; }
+
+/* CATEGORÍAS */
+.cat-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:0.65rem; }
+.cat-card { background:white; border-radius:14px; border:1px solid var(--borde); padding:1.05rem 1rem; cursor:pointer; transition:transform 0.15s,box-shadow 0.15s; text-decoration:none; display:block; }
+.cat-card:hover { transform:translateY(-2px); box-shadow:var(--sombra); }
+.cat-card.wide { grid-column:span 2; display:flex; align-items:center; justify-content:space-between; background:var(--verde); }
+.cat-icon { font-size:1.5rem; display:block; margin-bottom:0.45rem; }
+.cat-card.wide .cat-icon { font-size:1.9rem; margin:0; }
+.cat-nombre { font-size:0.8rem; font-weight:600; color:var(--texto); }
+.cat-card.wide .cat-nombre { color:white; font-size:0.9rem; }
+.cat-cnt { font-size:0.62rem; color:var(--gris); margin-top:0.12rem; }
+.cat-card.wide .cat-cnt { color:rgba(255,255,255,0.62); }
+
+/* LUGARES */
+.lugares-list { display:flex; flex-direction:column; gap:0.65rem; }
+.lugar-card { background:white; border-radius:14px; border:1px solid var(--borde); overflow:hidden; display:flex; transition:transform 0.15s; }
+.lugar-card:hover { transform:translateX(3px); }
+.lugar-acento { width:4px; flex-shrink:0; background:var(--verde); }
+.lugar-acento.gold { background:var(--dorado); }
+.lugar-acento.dark { background:var(--verde-oscuro); }
+.lugar-body { padding:0.88rem 1rem; flex:1; }
+.lugar-badge { font-size:0.56rem; letter-spacing:0.08em; text-transform:uppercase; background:rgba(26,92,58,0.08); color:var(--verde); padding:0.16rem 0.48rem; border-radius:100px; display:inline-block; margin-bottom:0.28rem; font-weight:600; }
+.lugar-badge.destac { background:rgba(232,160,32,0.15); color:#b07010; }
+.lugar-nombre { font-family:'Playfair Display',serif; font-size:0.98rem; color:var(--verde-oscuro); margin-bottom:0.28rem; }
+.lugar-desc { font-size:0.74rem; color:var(--gris); line-height:1.55; margin-bottom:0.45rem; }
+.lugar-meta { display:flex; gap:0.8rem; font-size:0.66rem; color:#9ca3af; flex-wrap:wrap; }
+.lugar-contacto { display:flex; gap:0.6rem; margin-top:0.4rem; flex-wrap:wrap; }
+.lugar-btn { font-size:0.62rem; font-weight:600; padding:0.25rem 0.65rem; border-radius:100px; text-decoration:none; display:inline-flex; align-items:center; gap:0.25rem; }
+.lugar-btn.wa { background:#25D366; color:white; }
+.lugar-btn.maps { background:rgba(26,92,58,0.1); color:var(--verde); }
+
+/* BANNER AFILIADO COSTALITORAL */
+.banner-costalitoral {
+  margin:0 1.2rem 1.5rem;
+  background:linear-gradient(135deg, #0a2a1a 0%, #1a5c3a 100%);
+  border-radius:16px; padding:1.5rem 1.4rem;
+  position:relative; overflow:hidden;
+  border:1px solid rgba(232,160,32,0.3);
+}
+.banner-costalitoral::before {
+  content:''; position:absolute; inset:0;
+  background:radial-gradient(ellipse 70% 80% at 110% 110%, rgba(232,160,32,0.2),transparent);
+}
+.banner-tag { font-size:0.58rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--dorado); margin-bottom:0.4rem; position:relative; display:flex; align-items:center; gap:0.4rem; }
+.banner-tag::before { content:'⭐'; font-size:0.7rem; }
+.banner-titulo { font-family:'Playfair Display',serif; font-size:1.2rem; color:white; margin-bottom:0.3rem; position:relative; }
+.banner-desc { font-size:0.74rem; color:rgba(255,255,255,0.6); margin-bottom:1rem; position:relative; line-height:1.5; }
+.banner-chips { display:flex; gap:0.4rem; flex-wrap:wrap; margin-bottom:1rem; position:relative; }
+.banner-chip { font-size:0.6rem; background:rgba(255,255,255,0.1); color:rgba(255,255,255,0.8); padding:0.2rem 0.55rem; border-radius:100px; }
+.banner-cta {
+  display:inline-flex; align-items:center; gap:0.45rem;
+  background:#25D366; color:white;
+  font-size:0.78rem; font-weight:700;
+  padding:0.68rem 1.2rem; border-radius:100px;
+  text-decoration:none; position:relative;
+  transition:opacity 0.15s;
+}
+.banner-cta:hover { opacity:0.88; }
+
+/* GASTRONOMÍA */
+.resto-list { display:flex; flex-direction:column; gap:0.65rem; }
+.resto-card { background:white; border-radius:14px; border:1px solid var(--borde); padding:1rem 1.1rem; display:flex; align-items:flex-start; gap:0.9rem; transition:transform 0.15s; }
+.resto-card:hover { transform:translateX(3px); }
+.resto-emoji { font-size:1.8rem; flex-shrink:0; width:40px; text-align:center; margin-top:2px; }
+.resto-info { flex:1; }
+.resto-nombre { font-weight:600; font-size:0.88rem; color:var(--texto); margin-bottom:0.12rem; }
+.resto-tipo { font-size:0.68rem; color:var(--gris); margin-bottom:0.35rem; }
+.resto-chips { display:flex; gap:0.35rem; flex-wrap:wrap; margin-bottom:0.35rem; }
+.chip { font-size:0.56rem; padding:0.13rem 0.48rem; border-radius:100px; background:var(--gris-claro); color:var(--gris); font-weight:500; }
+.chip.verde { background:rgba(26,92,58,0.08); color:var(--verde); }
+.chip.gold { background:rgba(232,160,32,0.12); color:#b07010; }
+.resto-precio { font-size:0.8rem; font-weight:700; color:var(--verde); flex-shrink:0; }
+.resto-contacto { font-size:0.65rem; color:var(--gris); display:flex; align-items:center; gap:0.3rem; }
+
+/* TIPS */
+.tips-grid { display:flex; flex-direction:column; gap:0.6rem; }
+.tip-card { background:white; border-radius:14px; border:1px solid var(--borde); padding:1rem 1.1rem; display:flex; gap:0.9rem; align-items:flex-start; }
+.tip-num { font-family:'Playfair Display',serif; font-size:1.4rem; color:var(--dorado); line-height:1; flex-shrink:0; width:26px; font-weight:700; }
+.tip-titulo { font-size:0.83rem; font-weight:600; color:var(--texto); margin-bottom:0.22rem; }
+.tip-texto { font-size:0.74rem; color:var(--gris); line-height:1.55; }
+
+/* PASEOS GUIADOS GOBIERNO */
+.paseos-list { display:flex; flex-direction:column; gap:0.6rem; }
+.paseo-item { background:white; border-radius:12px; border:1px solid var(--borde); padding:0.85rem 1rem; display:flex; align-items:center; gap:0.8rem; }
+.paseo-icon { font-size:1.3rem; flex-shrink:0; }
+.paseo-nombre { font-size:0.83rem; font-weight:600; color:var(--texto); margin-bottom:0.1rem; }
+.paseo-info { font-size:0.68rem; color:var(--gris); }
+
+/* CENTROS TURÍSTICOS */
+.centros-list { display:flex; flex-direction:column; gap:0.6rem; }
+.centro-card { background:white; border-radius:12px; border:1px solid var(--borde); padding:0.9rem 1rem; }
+.centro-nombre { font-size:0.82rem; font-weight:700; color:var(--verde-oscuro); margin-bottom:0.2rem; }
+.centro-dir { font-size:0.7rem; color:var(--gris); margin-bottom:0.15rem; display:flex; align-items:flex-start; gap:0.3rem; }
+.centro-tel { font-size:0.7rem; color:var(--verde); font-weight:600; display:flex; align-items:center; gap:0.3rem; }
+
+/* QR HOTELES */
+.qr-section { background:var(--verde); margin:0 1.2rem 1.8rem; border-radius:16px; padding:1.8rem 1.4rem; text-align:center; }
+.qr-box { width:70px; height:70px; background:white; border-radius:12px; margin:0.8rem auto; display:flex; align-items:center; justify-content:center; font-size:1.7rem; box-shadow:0 4px 12px rgba(0,0,0,0.2); }
+.qr-section h3 { font-family:'Playfair Display',serif; font-size:1.15rem; color:white; margin-bottom:0.4rem; }
+.qr-section p { font-size:0.74rem; color:rgba(255,255,255,0.68); line-height:1.55; margin-bottom:1rem; }
+.btn-wa { display:inline-flex; align-items:center; gap:0.45rem; background:#25D366; color:white; font-size:0.78rem; font-weight:600; padding:0.68rem 1.2rem; border-radius:100px; text-decoration:none; transition:opacity 0.15s; }
+.btn-wa:hover { opacity:0.88; }
+
+/* FOOTER */
+.footer { background:var(--verde-oscuro); padding:2rem 1.2rem; }
+.footer-logo { font-weight:700; font-size:1.05rem; margin-bottom:0.7rem; }
+.footer-logo .sf { color:white; }
+.footer-logo .hoy { color:var(--dorado); }
+.footer p { font-size:0.72rem; color:rgba(255,255,255,0.38); line-height:1.6; margin-bottom:1.1rem; }
+.footer-links { display:flex; gap:1.1rem; flex-wrap:wrap; }
+.footer-links a { font-size:0.68rem; color:rgba(255,255,255,0.38); text-decoration:none; }
+.footer-links a:hover { color:var(--dorado); }
+.footer-copy { font-size:0.6rem; color:rgba(255,255,255,0.18); margin-top:1rem; }
+
+/* BOTTOM NAV */
+.bottom-nav { position:fixed; bottom:0; left:0; right:0; background:var(--verde-oscuro); display:flex; padding:0.6rem 0 calc(0.6rem + env(safe-area-inset-bottom)); z-index:200; border-top:1px solid rgba(255,255,255,0.06); }
+.nav-item { flex:1; display:flex; flex-direction:column; align-items:center; gap:0.18rem; cursor:pointer; text-decoration:none; }
+.nav-icon { font-size:1.1rem; }
+.nav-label { font-size:0.52rem; letter-spacing:0.05em; text-transform:uppercase; color:rgba(255,255,255,0.28); font-weight:500; }
+.nav-item.active .nav-label { color:var(--dorado); }
+
+.main { padding-bottom:5.5rem; }
+.fade-up { opacity:0; transform:translateY(14px); transition:opacity 0.4s ease,transform 0.4s ease; }
+.fade-up.in { opacity:1; transform:translateY(0); }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <a href="#" class="logo-svg">
+    <svg width="36" height="30" viewBox="0 0 38 32" fill="none">
+      <circle cx="8" cy="14" r="4.5" fill="#e8a020" opacity="0.95"/>
+      <line x1="8" y1="8" x2="8" y2="6.5" stroke="#e8a020" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="8" y1="20" x2="8" y2="21.5" stroke="#e8a020" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="2" y1="14" x2="0.5" y2="14" stroke="#e8a020" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="3.9" y1="9.9" x2="2.8" y2="8.8" stroke="#e8a020" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="12.1" y1="9.9" x2="13.2" y2="8.8" stroke="#e8a020" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="3.9" y1="18.1" x2="2.8" y2="19.2" stroke="#e8a020" stroke-width="1.3" stroke-linecap="round"/>
+      <rect x="16" y="7" width="3.5" height="17" rx="1" fill="#1a5c3a"/>
+      <rect x="27" y="11" width="2.8" height="11" rx="0.8" fill="#1a5c3a"/>
+      <path d="M17.75 8 Q22 18 29.4 12.5" stroke="#1a5c3a" stroke-width="1.4" fill="none"/>
+      <path d="M17.75 8 Q14 16 12 24" stroke="#1a5c3a" stroke-width="1.4" fill="none"/>
+      <line x1="10" y1="24" x2="36" y2="24" stroke="#1a5c3a" stroke-width="2" stroke-linecap="round"/>
+      <line x1="14" y1="19" x2="14" y2="24" stroke="#1a5c3a" stroke-width="0.9" opacity="0.6"/>
+      <line x1="22" y1="21" x2="22" y2="24" stroke="#1a5c3a" stroke-width="0.9" opacity="0.6"/>
+      <line x1="25" y1="20" x2="25" y2="24" stroke="#1a5c3a" stroke-width="0.9" opacity="0.6"/>
+      <path d="M8 28 Q12 26 16 28 Q20 30 24 28 Q28 26 32 28" stroke="#1a9c6a" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <path d="M10 31 Q14 29.2 18 31 Q22 32.8 26 31" stroke="#1a9c6a" stroke-width="1.2" fill="none" stroke-linecap="round" opacity="0.6"/>
+    </svg>
+    <div>
+      <div class="logo-title"><span class="sf">Santa Fe </span><span class="hoy">Hoy</span></div>
+      <div class="logo-sub">Guía Turística Digital</div>
+    </div>
+  </a>
+  <button class="btn-sm">📍 Capital</button>
+</header>
+
+<div class="main">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-eyebrow">La ciudad en tiempo real</div>
+    <h1>Todo lo que<br>pasa <em>hoy</em><br>en Santa Fe</h1>
+    <p class="hero-desc">Eventos, excursiones y consejos honestos. La guía que los locales usarían.</p>
+    <div class="hero-pills">
+      <a href="#eventos" class="pill active">📅 Agenda</a>
+      <a href="#explorar" class="pill">🗺️ Explorar</a>
+      <a href="#gastronomia" class="pill">🍽️ Comer</a>
+      <a href="#tips" class="pill">💡 Tips</a>
+    </div>
+  </section>
+
+  <!-- CLIMA -->
+  <div class="clima-strip">
+    <div class="clima-left">
+      <div class="clima-temp" id="clima-temp">--°</div>
+      <div>
+        <div class="clima-desc" id="clima-desc">Cargando...</div>
+        <div class="clima-ciudad">Santa Fe Capital</div>
+      </div>
+    </div>
+    <div class="clima-datos">
+      <div class="clima-dato"><span>Humedad</span><span id="clima-hum">--%</span></div>
+      <div class="clima-dato"><span>Viento</span><span id="clima-viento">-- km/h</span></div>
+    </div>
+  </div>
+
+  <!-- EVENTOS -->
+  <section class="section fade-up" id="eventos">
+    <div class="sec-header">
+      <div>
+        <span class="sec-label">Agenda oficial</span>
+        <h2 class="sec-title">Eventos <span class="badge-live">En vivo</span></h2>
+      </div>
+      <a href="https://www.santafe.tur.ar/eventos/" target="_blank" class="sec-link">Ver todos →</a>
+    </div>
+    <div class="eventos-list" id="eventos-container">
+      <div class="eventos-loading"><div class="spinner"></div>Cargando agenda...</div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- COSTALITORAL BANNER AFILIADO -->
+  <section class="section fade-up">
+    <div class="sec-header">
+      <div>
+        <span class="sec-label">Excursión destacada · Afiliado</span>
+        <h2 class="sec-title">Paseos por el Paraná</h2>
+      </div>
+    </div>
+    <div class="banner-costalitoral">
+      <div class="banner-tag">Excursión más reservada</div>
+      <div class="banner-titulo">Costalitoral 🚢</div>
+      <div class="banner-desc">Santa Fe contada desde el río. Recorrés la historia, la naturaleza y los paisajes con una vista única. 1:30 hs · 90 pasajeros.</div>
+      <div class="banner-chips">
+        <span class="banner-chip">🌊 Puente Colgante</span>
+        <span class="banner-chip">🏝️ Islas del Paraná</span>
+        <span class="banner-chip">🦅 Flora y fauna</span>
+        <span class="banner-chip">🏛️ Museo Constitución</span>
+        <span class="banner-chip">📍 Dique 1, Puerto SF</span>
+      </div>
+      <a href="https://wa.me/5493425107970?text=Hola%2C+vi+su+info+en+Santa+Fe+Hoy+y+quisiera+reservar+un+paseo" class="banner-cta" target="_blank">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Reservar por WhatsApp
+      </a>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- EXPLORAR -->
+  <section class="section fade-up" id="explorar">
+    <div class="sec-header">
+      <div><span class="sec-label">¿Qué hacer?</span><h2 class="sec-title">Explorá la ciudad</h2></div>
+    </div>
+    <div class="cat-grid">
+      <a href="#" class="cat-card wide">
+        <div><div class="cat-nombre">🌊 Costanera & Río Paraná</div><div class="cat-cnt">El paseo ribereño más largo del país</div></div>
+        <span style="color:white;font-size:1.2rem;">→</span>
+      </a>
+      <a href="#" class="cat-card"><span class="cat-icon">🏛️</span><div class="cat-nombre">Cultura</div><div class="cat-cnt">Museos y patrimonio</div></a>
+      <a href="#" class="cat-card"><span class="cat-icon">🚤</span><div class="cat-nombre">Excursiones</div><div class="cat-cnt">Islas y delta</div></a>
+      <a href="#" class="cat-card"><span class="cat-icon">🚲</span><div class="cat-nombre">Las Bicis</div><div class="cat-cnt">Recorridos guiados</div></a>
+      <a href="#" class="cat-card"><span class="cat-icon">🍺</span><div class="cat-nombre">Cervecería</div><div class="cat-cnt">Paseo histórico</div></a>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- IMPERDIBLES con datos reales -->
+  <section class="section fade-up">
+    <div class="sec-header">
+      <div><span class="sec-label">Con datos reales</span><h2 class="sec-title">No te podés ir sin ver</h2></div>
+    </div>
+    <div class="lugares-list">
+
+      <div class="lugar-card">
+        <div class="lugar-acento gold"></div>
+        <div class="lugar-body">
+          <span class="lugar-badge destac">⭐ Imperdible</span>
+          <div class="lugar-nombre">Manzana Jesuítica</div>
+          <div class="lugar-desc">Sitio histórico, museo y colegio jesuita más antiguo del país. Patrimonio inigualable, entrada libre y gratuita.</div>
+          <div class="lugar-meta"><span>📍 San Martín 1540</span><span>🕐 Entrada libre</span></div>
+          <div class="lugar-contacto">
+            <a href="https://maps.google.com/?q=Manzana+Jesuitica+Santa+Fe+Argentina" target="_blank" class="lugar-btn maps">📍 Ver en mapa</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="lugar-card">
+        <div class="lugar-acento dark"></div>
+        <div class="lugar-body">
+          <span class="lugar-badge">Historia</span>
+          <div class="lugar-nombre">Museo de la Constitución</div>
+          <div class="lugar-desc">Donde se sancionó la Constitución Nacional Argentina en 1853. Visitas con turno previo.</div>
+          <div class="lugar-meta"><span>📍 Av. Circunvalación y 1° de Mayo</span></div>
+          <div class="lugar-contacto">
+            <a href="tel:3425118351" class="lugar-btn maps">📞 342 5118351</a>
+            <a href="https://maps.google.com/?q=Museo+Constitucion+Santa+Fe+Argentina" target="_blank" class="lugar-btn maps">📍 Mapa</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="lugar-card">
+        <div class="lugar-acento"></div>
+        <div class="lugar-body">
+          <span class="lugar-badge">Naturaleza</span>
+          <div class="lugar-nombre">Jardín Botánico</div>
+          <div class="lugar-desc">Visitas guiadas gratuitas. Ideal para ir con chicos o descansar del centro.</div>
+          <div class="lugar-meta"><span>📍 Gorriti 3900</span><span>🕐 Gratuito</span></div>
+          <div class="lugar-contacto">
+            <a href="tel:3424578410" class="lugar-btn maps">📞 342 4578410</a>
+            <a href="https://maps.google.com/?q=Jardin+Botanico+Santa+Fe+Argentina" target="_blank" class="lugar-btn maps">📍 Mapa</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="lugar-card">
+        <div class="lugar-acento gold"></div>
+        <div class="lugar-body">
+          <span class="lugar-badge destac">⭐ Único</span>
+          <div class="lugar-nombre">Paseo de la Cervecería Santa Fe</div>
+          <div class="lugar-desc">Recorrido por la fábrica de la cerveza más icónica del litoral. Una experiencia que sorprende.</div>
+          <div class="lugar-meta"><span>📍 Calchines 1401</span></div>
+          <div class="lugar-contacto">
+            <a href="tel:3426123666" class="lugar-btn maps">📞 342 6123666</a>
+            <a href="https://maps.google.com/?q=Cerveceria+Santa+Fe+Calchines" target="_blank" class="lugar-btn maps">📍 Mapa</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="lugar-card">
+        <div class="lugar-acento"></div>
+        <div class="lugar-body">
+          <span class="lugar-badge">Ciencia</span>
+          <div class="lugar-nombre">Planetario y Museo del Espacio CODE</div>
+          <div class="lugar-desc">Visitas guiadas, observatorio y museo interactivo. Perfecto para familias.</div>
+          <div class="lugar-meta"><span>📍 Av. Almirante Brown 4998</span></div>
+          <div class="lugar-contacto">
+            <a href="tel:3425001236" class="lugar-btn maps">📞 342 5001236</a>
+            <a href="https://maps.google.com/?q=Planetario+Santa+Fe+Argentina" target="_blank" class="lugar-btn maps">📍 Mapa</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- PASEOS GUIADOS GOBIERNO -->
+  <section class="section fade-up">
+    <div class="sec-header">
+      <div><span class="sec-label">Gratuitos</span><h2 class="sec-title">Paseos turísticos</h2></div>
+    </div>
+    <div class="paseos-list">
+      <div class="paseo-item"><span class="paseo-icon">🚶</span><div><div class="paseo-nombre">Paseo Peatonal</div><div class="paseo-info">Guiado y gratuito · Centro histórico</div></div></div>
+      <div class="paseo-item"><span class="paseo-icon">🌳</span><div><div class="paseo-nombre">Paseo Boulevard</div><div class="paseo-info">Guiado y gratuito · Bulevar Gálvez</div></div></div>
+      <div class="paseo-item"><span class="paseo-icon">⛪</span><div><div class="paseo-nombre">Casco Histórico</div><div class="paseo-info">Guiado y gratuito · Desde Plaza 25 de Mayo</div></div></div>
+      <div class="paseo-item"><span class="paseo-icon">⛵</span><div><div class="paseo-nombre">Paseo del Puerto</div><div class="paseo-info">Guiado y gratuito · Dique 1</div></div></div>
+      <div class="paseo-item"><span class="paseo-icon">🌅</span><div><div class="paseo-nombre">Paseo Costanera</div><div class="paseo-info">Guiado y gratuito · Costanera Este</div></div></div>
+      <div class="paseo-item">
+        <span class="paseo-icon">🚌</span>
+        <div>
+          <div class="paseo-nombre">Bus Turístico</div>
+          <div class="paseo-info">Sale del Dique 1 · Reservas: 342 4454567</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- GASTRONOMÍA -->
+  <section class="section fade-up" id="gastronomia">
+    <div class="sec-header">
+      <div><span class="sec-label">Dónde comer</span><h2 class="sec-title">Gastronomía local</h2></div>
+    </div>
+    <div class="resto-list">
+      <div class="resto-card">
+        <div class="resto-emoji">🐟</div>
+        <div class="resto-info">
+          <div class="resto-nombre">Costalitoral Restaurant</div>
+          <div class="resto-tipo">Gastronomía santafesina · Vista al río · Puerto de Santa Fe</div>
+          <div class="resto-chips"><span class="chip gold">Vista al agua</span><span class="chip verde">Surubí y dorado</span><span class="chip">Amplio salón</span></div>
+          <div class="resto-contacto">📞 342 5107970 · Puerto de Santa Fe</div>
+        </div>
+        <div class="resto-precio">$$</div>
+      </div>
+      <div class="resto-card">
+        <div class="resto-emoji">🛒</div>
+        <div class="resto-info">
+          <div class="resto-nombre">Mercado Norte</div>
+          <div class="resto-tipo">Gastronomía variada · Productos regionales</div>
+          <div class="resto-chips"><span class="chip verde">Local auténtico</span><span class="chip">Chipá fresco</span></div>
+          <div class="resto-contacto">📍 Santiago del Estero 3166 · 342 4566728</div>
+        </div>
+        <div class="resto-precio">$</div>
+      </div>
+      <div class="resto-card">
+        <div class="resto-emoji">☕</div>
+        <div class="resto-info">
+          <div class="resto-nombre">Cafés del Centro</div>
+          <div class="resto-tipo">Desayunos y meriendas · Peatonal San Martín</div>
+          <div class="resto-chips"><span class="chip">Medialunas</span><span class="chip verde">Centro</span></div>
+          <div class="resto-contacto">📍 San Martín y alrededores</div>
+        </div>
+        <div class="resto-precio">$</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- TIPS -->
+  <section class="section fade-up" id="tips">
+    <div class="sec-header">
+      <div><span class="sec-label">Consejos de estadía</span><h2 class="sec-title">Tips del local</h2></div>
+    </div>
+    <div class="tips-grid">
+      <div class="tip-card"><div class="tip-num">01</div><div><div class="tip-titulo">El calor aprieta fuerte</div><div class="tip-texto">Salí antes de las 10 AM o después de las 18 PM. El mediodía santafesino en verano es difícil sin sombra.</div></div></div>
+      <div class="tip-card"><div class="tip-num">02</div><div><div class="tip-titulo">Tolerancia cero al alcohol</div><div class="tip-texto">En Santa Fe Capital rige tolerancia CERO. Te paran, soplás, y si hay alcohol te sacan el auto en el momento. Sin excepciones. Remís o a pie.</div></div></div>
+      <div class="tip-card"><div class="tip-num">03</div><div><div class="tip-titulo">Pedí surubí, no merluza</div><div class="tip-texto">El surubí es el pescado local del Paraná. Si pedís merluza en Santa Fe, algo salió mal.</div></div></div>
+      <div class="tip-card"><div class="tip-num">04</div><div><div class="tip-titulo">Remís > Taxi siempre</div><div class="tip-texto">Más seguros, más puntuales y generalmente más baratos. Pedile al hotel uno de confianza.</div></div></div>
+      <div class="tip-card"><div class="tip-num">05</div><div><div class="tip-titulo">Los domingos cierra todo</div><div class="tip-texto">El comercio santafesino descansa de verdad los domingos. Verificá horarios antes de planificar.</div></div></div>
+      <div class="tip-card"><div class="tip-num">06</div><div><div class="tip-titulo">Chatbot oficial de Turismo</div><div class="tip-texto">El municipio tiene chatbot de turismo 24/7. WhatsApp: 342 4063525. Útil para eventos y horarios.</div></div></div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- CENTROS DE INFORMACIÓN -->
+  <section class="section fade-up">
+    <div class="sec-header">
+      <div><span class="sec-label">Oficiales</span><h2 class="sec-title">Información turística</h2></div>
+    </div>
+    <div class="centros-list">
+      <div class="centro-card">
+        <div class="centro-nombre">🚌 Terminal de Ómnibus</div>
+        <div class="centro-dir">📍 Belgrano 2910</div>
+        <div class="centro-tel">📞 (0342) 4574124 / 28</div>
+      </div>
+      <div class="centro-card">
+        <div class="centro-nombre">🚶 Peatonal — Centro</div>
+        <div class="centro-dir">📍 San Martín 2020, frente al Teatro Municipal</div>
+        <div class="centro-tel">📱 (0342) 154063525</div>
+      </div>
+      <div class="centro-card">
+        <div class="centro-nombre">⚓ Puerto de Santa Fe</div>
+        <div class="centro-dir">📍 Cabecera Dique I</div>
+        <div class="centro-tel">📞 (0342) 4571512</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QR HOTELES -->
+  <div class="qr-section fade-up">
+    <p style="font-size:0.58rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:0.2rem;">¿Sos hotelero o anfitrión?</p>
+    <h3>Poné esta guía en tu lobby</h3>
+    <div class="qr-box">📲</div>
+    <p>Un QR gratis para tus huéspedes.<br>Sin publicidad invasiva, solo info útil.</p>
+    <a href="https://wa.me/+54XXXXXXXXXX?text=Hola%2C+me+interesa+la+gu%C3%ADa+Santa+Fe+Hoy+para+mi+hotel" class="btn-wa">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Contactar por WhatsApp
+    </a>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-logo"><span class="sf">Santa Fe </span><span class="hoy">Hoy</span></div>
+    <p>Guía turística independiente de Santa Fe Capital.<br>Datos reales, actualizados por locales. Hecho con ❤️ en Santa Fe.</p>
+    <div class="footer-links">
+      <a href="#">Inicio</a><a href="#eventos">Agenda</a>
+      <a href="#gastronomia">Gastronomía</a><a href="#tips">Tips</a><a href="#">Contacto</a>
+    </div>
+    <div class="footer-copy">© 2025 Santa Fe Hoy · santafehoy.com.ar</div>
+  </footer>
+
+</div>
+
+<nav class="bottom-nav">
+  <a href="#" class="nav-item active"><span class="nav-icon">🏠</span><span class="nav-label" style="color:var(--dorado)">Inicio</span></a>
+  <a href="#eventos" class="nav-item"><span class="nav-icon">📅</span><span class="nav-label">Agenda</span></a>
+  <a href="#gastronomia" class="nav-item"><span class="nav-icon">🍽️</span><span class="nav-label">Comer</span></a>
+  <a href="#tips" class="nav-item"><span class="nav-icon">💡</span><span class="nav-label">Tips</span></a>
+</nav>
+
+<script>
+// CLIMA
+async function cargarClima() {
+  try {
+    const r = await fetch('https://api.open-meteo.com/v1/forecast?latitude=-31.633&longitude=-60.7&current_weather=true&hourly=relativehumidity_2m,windspeed_10m&timezone=America/Argentina/Buenos_Aires');
+    const d = await r.json();
+    const cw = d.current_weather;
+    const c = {0:'Despejado ☀️',1:'Casi despejado',2:'Parcialmente nublado ⛅',3:'Nublado ☁️',45:'Neblina 🌫️',61:'Lluvia leve 🌧️',63:'Lluvia 🌧️',80:'Lluvias 🌦️',95:'Tormenta ⛈️'};
+    document.getElementById('clima-temp').textContent = Math.round(cw.temperature)+'°C';
+    document.getElementById('clima-desc').textContent = c[cw.weathercode]||'Variable';
+    document.getElementById('clima-viento').textContent = Math.round(cw.windspeed)+' km/h';
+    const h = new Date().getHours();
+    const hum = d.hourly?.relativehumidity_2m?.[h];
+    if(hum) document.getElementById('clima-hum').textContent = hum+'%';
+  } catch(e){ document.getElementById('clima-desc').textContent='Ver afuera 😄'; }
+}
+cargarClima();
+
+// EVENTOS
+async function cargarEventos() {
+  const c = document.getElementById('eventos-container');
+  const meses = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+  try {
+    const r = await fetch('https://www.santafe.tur.ar/wp-json/wp/v2/posts?per_page=5&_fields=id,title,date,link&orderby=date&order=desc');
+    if(!r.ok) throw new Error();
+    const posts = await r.json();
+    if(!posts?.length) throw new Error();
+    c.innerHTML = posts.map(p => {
+      const f = new Date(p.date);
+      const titulo = (p.title?.rendered||'Evento').replace(/&#(\d+);/g,(_,n)=>String.fromCharCode(n)).replace(/<[^>]+>/g,'');
+      return `<a href="${p.link}" target="_blank" class="evento-card">
+        <div class="evento-fecha"><div class="evento-dia">${f.getDate()}</div><div class="evento-mes">${meses[f.getMonth()]}</div></div>
+        <div class="evento-body"><span class="evento-tag">Agenda oficial</span><div class="evento-nombre">${titulo}</div><div class="evento-lugar">📍 Santa Fe Capital</div></div>
+      </a>`;
+    }).join('');
+  } catch {
+    const fb = [
+      {dia:7,mes:'Jun',tag:'Cultura',n:'Feria del Libro Santa Fe 2025',l:'Predio Ferial Ciudad'},
+      {dia:14,mes:'Jun',tag:'Gastronomía',n:'Festival del Surubí',l:'Costanera Este'},
+      {dia:21,mes:'Jun',tag:'Música',n:'Noche de Jazz en el Molino',l:'Molino Marconetti'},
+      {dia:28,mes:'Jun',tag:'Deporte',n:'Regata del Paraná',l:'Puerto Santa Fe'},
+    ];
+    c.innerHTML = fb.map(e=>`<div class="evento-card">
+      <div class="evento-fecha"><div class="evento-dia">${e.dia}</div><div class="evento-mes">${e.mes}</div></div>
+      <div class="evento-body"><span class="evento-tag">${e.tag}</span><div class="evento-nombre">${e.n}</div><div class="evento-lugar">📍 ${e.l}</div></div>
+    </div>`).join('')+`<p style="font-size:0.68rem;color:var(--gris);text-align:center;padding:0.6rem 0"><a href="https://www.santafe.tur.ar/eventos/" target="_blank" style="color:var(--verde)">Ver agenda completa en santafe.tur.ar →</a></p>`;
+  }
+}
+cargarEventos();
+
+// FADE UP
+const obs = new IntersectionObserver(e=>e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('in');obs.unobserve(el.target);}}),{threshold:0.08});
+document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+
+// SMOOTH SCROLL
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});}}));
+</script>
+</body>
+</html>
