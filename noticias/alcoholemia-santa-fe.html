@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alcoholemia en Santa Fe Capital: tolerancia cero y controles · Santa Fe Hoy</title>
+<meta name="description" content="En Santa Fe Capital rige tolerancia cero de alcohol al volante. Conocé los límites, las multas, dónde son los controles y qué hacer antes de manejar.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--verde:#1a5c3a;--verde-oscuro:#0f3d26;--dorado:#e8a020;--rojo:#c0392b;--arena:#faf7f2;--texto:#1a1a1a;--gris:#6b7280;--borde:rgba(0,0,0,0.07);}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--arena);color:var(--texto);}
+.header{position:sticky;top:0;z-index:100;background:rgba(250,247,242,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--borde);padding:0.85rem 1.2rem;display:flex;align-items:center;justify-content:space-between;}
+.logo-title{font-weight:700;font-size:1.05rem;}.logo-title .sf{color:var(--verde-oscuro);}.logo-title .hoy{color:var(--dorado);}
+.back{font-size:0.75rem;color:var(--verde);text-decoration:none;font-weight:600;}
+.hero-art{background:#1a0a0a;padding:2.5rem 1.2rem 2rem;position:relative;overflow:hidden;}
+.hero-art::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at -10% 110%,rgba(192,57,43,0.4),transparent 55%);}
+.art-cat{font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:#ff6b6b;margin-bottom:0.6rem;position:relative;}
+.art-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,7vw,2.8rem);color:white;line-height:1.1;position:relative;margin-bottom:0.8rem;}
+.art-meta{font-size:0.72rem;color:rgba(255,255,255,0.5);position:relative;}
+.alerta-box{background:#fff0f0;border-left:4px solid var(--rojo);border-radius:0 12px 12px 0;padding:1rem 1.2rem;margin:1.2rem 0;font-size:0.88rem;line-height:1.6;color:#5a0000;}
+.art-body{max-width:680px;margin:0 auto;padding:2rem 1.2rem 5rem;}
+.art-body p{font-size:0.95rem;line-height:1.8;color:#333;margin-bottom:1.2rem;}
+.art-body h2{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--verde-oscuro);margin:2rem 0 0.8rem;}
+.art-body h3{font-size:1rem;font-weight:700;color:var(--verde-oscuro);margin:1.5rem 0 0.6rem;}
+.art-body strong{color:var(--texto);font-weight:600;}
+.tip-box{background:white;border-left:4px solid var(--dorado);border-radius:0 12px 12px 0;padding:1rem 1.2rem;margin:1.2rem 0;font-size:0.88rem;line-height:1.6;color:#444;}
+.art-body ul{padding-left:1.2rem;margin-bottom:1.2rem;}
+.art-body ul li{font-size:0.92rem;line-height:1.7;color:#333;margin-bottom:0.3rem;}
+.consecuencias-grid{display:flex;flex-direction:column;gap:0.7rem;margin:1.2rem 0;}
+.cons-card{background:white;border-radius:12px;padding:1rem 1.1rem;border:1px solid var(--borde);border-left:4px solid var(--rojo);}
+.cons-nivel{font-size:0.62rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--rojo);margin-bottom:0.3rem;}
+.cons-titulo{font-weight:700;font-size:0.88rem;color:var(--texto);margin-bottom:0.3rem;}
+.cons-desc{font-size:0.78rem;color:var(--gris);line-height:1.5;}
+.mitos-grid{display:flex;flex-direction:column;gap:0.6rem;margin:1.2rem 0;}
+.mito-card{background:white;border-radius:12px;padding:0.9rem 1rem;border:1px solid var(--borde);display:flex;gap:0.8rem;align-items:flex-start;}
+.mito-icon{font-size:1.2rem;flex-shrink:0;}
+.mito-texto{font-size:0.8rem;line-height:1.55;color:#444;}
+.mito-texto strong{color:var(--rojo);}
+.alternativas{background:var(--verde-oscuro);border-radius:16px;padding:1.4rem;margin:1.5rem 0;}
+.alternativas h3{font-family:'Playfair Display',serif;font-size:1.1rem;color:white;margin-bottom:0.8rem;}
+.alt-item{display:flex;gap:0.7rem;align-items:flex-start;margin-bottom:0.6rem;}
+.alt-icon{font-size:1rem;flex-shrink:0;}
+.alt-texto{font-size:0.8rem;color:rgba(255,255,255,0.75);line-height:1.5;}
+.back-btn{display:inline-flex;align-items:center;gap:0.4rem;background:var(--verde);color:white;padding:0.7rem 1.2rem;border-radius:100px;text-decoration:none;font-size:0.78rem;font-weight:600;margin-top:2rem;}
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:var(--verde-oscuro);display:flex;padding:0.6rem 0 calc(0.6rem + env(safe-area-inset-bottom));z-index:200;border-top:1px solid rgba(255,255,255,0.06);}
+.nav-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:0.18rem;text-decoration:none;}
+.nav-icon{font-size:1.1rem;}.nav-label{font-size:0.52rem;letter-spacing:0.05em;text-transform:uppercase;color:rgba(255,255,255,0.28);font-weight:500;}
+</style>
+</head>
+<body>
+<header class="header">
+  <a href="../index.html" style="text-decoration:none"><div class="logo-title"><span class="sf">Santa Fe </span><span class="hoy">Hoy</span></div></a>
+  <a href="../index.html" class="back">← Volver</a>
+</header>
+
+<div class="hero-art">
+  <div class="art-cat">⚠️ Información importante · Tránsito</div>
+  <h1 class="art-title">Alcoholemia en Santa Fe Capital: tolerancia cero, multas y controles</h1>
+  <div class="art-meta">Actualizado · Lectura 4 min · Santa Fe Hoy</div>
+</div>
+
+<div class="art-body">
+
+  <div class="alerta-box">🚨 <strong>Atención:</strong> En Santa Fe Capital rige <strong>tolerancia CERO</strong> de alcohol al volante. Cualquier mínima presencia de alcohol en sangre es infracción. Y si te detectan — <strong>te sacan el auto en el momento</strong>.</div>
+
+  <h2>¿Qué significa tolerancia cero?</h2>
+  <p>En Argentina, la Ley Nacional de Tránsito establece un límite de 0,5 g/l de alcohol en sangre para conductores particulares. Sin embargo, <strong>Santa Fe adoptó tolerancia cero por ordenanza municipal</strong>, lo que significa que el límite dentro de la ciudad es <strong>0,0 g/l</strong>.</p>
+  <p>No importa si "te sentís bien", si tomaste hace dos horas o si solo fue una copa. El alcoholímetro no negocia.</p>
+
+  <h2>Los controles en Santa Fe Capital</h2>
+  <p><strong>Cuándo:</strong> principalmente los fines de semana a partir de las 22 hs hasta la madrugada. También en feriados y eventos masivos.</p>
+  <p><strong>Dónde:</strong> accesos a la costanera, salidas de zonas de bares y restaurantes, Bulevar Pellegrini, accesos desde el Puente Colgante.</p>
+  <p><strong>Cómo operan:</strong> cortan el tránsito con agentes y hacen soplado aleatorio. Si das 0,0 seguís en segundos. Si das positivo, <strong>te sacan el auto en el momento</strong> y se lo llevan al depósito municipal.</p>
+
+  <h2>¿Qué pasa si te detectan con alcohol?</h2>
+  <div class="consecuencias-grid">
+    <div class="cons-card">
+      <div class="cons-nivel">Nivel mínimo — cualquier valor sobre 0,0</div>
+      <div class="cons-titulo">Te sacan el auto</div>
+      <div class="cons-desc">El vehículo va al depósito municipal. Para recuperarlo tenés que ir, pagar la estadía y completar el trámite. No es rápido ni barato. Más multa y retención del registro.</div>
+    </div>
+    <div class="cons-card">
+      <div class="cons-nivel">Nivel alto — 0,5 g/l en adelante</div>
+      <div class="cons-titulo">Sumario penal</div>
+      <div class="cons-desc">Posible detención preventiva. Auto en depósito. Antecedente en el registro de infractores.</div>
+    </div>
+    <div class="cons-card">
+      <div class="cons-nivel">Con accidente</div>
+      <div class="cons-titulo">Causa penal directa</div>
+      <div class="cons-desc">Si hubo siniestro vial y el conductor da positivo, las consecuencias son significativamente más graves. Posible prisión preventiva.</div>
+    </div>
+  </div>
+
+  <h2>Mitos que hay que desterrar</h2>
+  <div class="mitos-grid">
+    <div class="mito-card"><span class="mito-icon">❌</span><div class="mito-texto"><strong>"Una copa no hace nada"</strong> — Una copa de vino tarda 60 a 90 minutos en metabolizarse. Dos copas, el doble.</div></div>
+    <div class="mito-card"><span class="mito-icon">❌</span><div class="mito-texto"><strong>"El café baja el alcohol"</strong> — Falso. El café puede hacerte sentir más despierto, pero el nivel de alcohol no cambia.</div></div>
+    <div class="mito-card"><span class="mito-icon">❌</span><div class="mito-texto"><strong>"El agua ayuda"</strong> — Falso. Solo el tiempo metaboliza el alcohol. No hay atajo.</div></div>
+    <div class="mito-card"><span class="mito-icon">❌</span><div class="mito-texto"><strong>"Conozco una ruta sin controles"</strong> — Los controles son aleatorios y rotativos. No hay ruta segura.</div></div>
+  </div>
+
+  <h2>Alternativas para no manejar</h2>
+  <div class="alternativas">
+    <h3>Si tomás, estas son tus opciones 👇</h3>
+    <div class="alt-item"><span class="alt-icon">🚖</span><div class="alt-texto"><strong>Remís</strong> — La mejor opción. Seguro, puntual, precio acordado antes de subir. Pedile al hotel que te llame uno de confianza. Guardá el número antes de salir.</div></div>
+    <div class="alt-item"><span class="alt-icon">🚶</span><div class="alt-texto"><strong>A pie</strong> — Si te alojás cerca del centro o la costanera, muchos restaurantes están a distancia caminable. La solución más simple.</div></div>
+    <div class="alt-item"><span class="alt-icon">👥</span><div class="alt-texto"><strong>Conductor designado</strong> — Si viajás en grupo, rotación del que no toma esa noche. Lo más económico y lo más inteligente.</div></div>
+  </div>
+
+  <div class="tip-box">💡 La regla es simple: <strong>si tomás, no manejés</strong>. En Santa Fe Capital no hay zona gris. El sistema está diseñado para que la tolerancia cero sea literalmente eso.</div>
+
+  <a href="../index.html" class="back-btn">← Volver a Santa Fe Hoy</a>
+</div>
+
+<nav class="bottom-nav">
+  <a href="../index.html" class="nav-item"><span class="nav-icon">🏠</span><span class="nav-label">Inicio</span></a>
+  <a href="../index.html#eventos" class="nav-item"><span class="nav-icon">📅</span><span class="nav-label">Agenda</span></a>
+  <a href="../index.html#gastronomia" class="nav-item"><span class="nav-icon">🍽️</span><span class="nav-label">Comer</span></a>
+  <a href="../index.html#tips" class="nav-item"><span class="nav-icon">💡</span><span class="nav-label" style="color:var(--dorado)">Tips</span></a>
+</nav>
+</body>
+</html>

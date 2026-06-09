@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contacto · Santa Fe Hoy</title>
+<meta name="description" content="Contactate con Santa Fe Hoy. Consultas, sugerencias de lugares, afiliaciones y colaboraciones.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--verde:#1a5c3a;--verde-oscuro:#0f3d26;--dorado:#e8a020;--arena:#faf7f2;--texto:#1a1a1a;--gris:#6b7280;--borde:rgba(0,0,0,0.07);}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--arena);color:var(--texto);}
+.header{position:sticky;top:0;z-index:100;background:rgba(250,247,242,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--borde);padding:0.85rem 1.2rem;display:flex;align-items:center;justify-content:space-between;}
+.logo-title{font-weight:700;font-size:1.05rem;}.logo-title .sf{color:var(--verde-oscuro);}.logo-title .hoy{color:var(--dorado);}
+.back{font-size:0.75rem;color:var(--verde);text-decoration:none;font-weight:600;}
+.hero{background:var(--verde-oscuro);padding:2rem 1.2rem 1.8rem;}
+.hero h1{font-family:'Playfair Display',serif;font-size:1.8rem;color:white;margin-bottom:0.4rem;}
+.hero p{font-size:0.82rem;color:rgba(255,255,255,0.6);}
+.body{max-width:680px;margin:0 auto;padding:2rem 1.2rem 5rem;}
+.contact-grid{display:flex;flex-direction:column;gap:0.8rem;margin-bottom:2rem;}
+.contact-card{background:white;border-radius:14px;border:1px solid var(--borde);padding:1.2rem;display:flex;align-items:center;gap:1rem;text-decoration:none;transition:transform 0.15s;}
+.contact-card:hover{transform:translateX(4px);}
+.contact-icon{font-size:1.8rem;flex-shrink:0;width:44px;text-align:center;}
+.contact-info{}
+.contact-titulo{font-weight:600;font-size:0.9rem;color:var(--texto);margin-bottom:0.15rem;}
+.contact-desc{font-size:0.72rem;color:var(--gris);}
+.contact-card.wa .contact-titulo{color:#128C7E;}
+.divider-text{text-align:center;font-size:0.7rem;color:var(--gris);letter-spacing:0.1em;text-transform:uppercase;margin:1.5rem 0;position:relative;}
+.divider-text::before,.divider-text::after{content:'';position:absolute;top:50%;width:35%;height:1px;background:var(--borde);}
+.divider-text::before{left:0;}.divider-text::after{right:0;}
+.body h2{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--verde-oscuro);margin:1.5rem 0 0.8rem;}
+.body p{font-size:0.9rem;line-height:1.8;color:#444;margin-bottom:1rem;}
+.motivos-list{display:flex;flex-direction:column;gap:0.5rem;margin-bottom:1.5rem;}
+.motivo{background:white;border-radius:10px;padding:0.8rem 1rem;border:1px solid var(--borde);font-size:0.82rem;color:#444;display:flex;align-items:center;gap:0.6rem;}
+.footer-legal{background:var(--verde-oscuro);padding:1.5rem 1.2rem;text-align:center;margin-top:2rem;}
+.footer-legal p{font-size:0.7rem;color:rgba(255,255,255,0.35);margin-bottom:0.6rem;}
+.footer-legal a{color:rgba(255,255,255,0.35);text-decoration:none;font-size:0.68rem;margin:0 0.5rem;}
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:var(--verde-oscuro);display:flex;padding:0.6rem 0 calc(0.6rem + env(safe-area-inset-bottom));z-index:200;border-top:1px solid rgba(255,255,255,0.06);}
+.nav-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:0.18rem;text-decoration:none;}
+.nav-icon{font-size:1.1rem;}.nav-label{font-size:0.52rem;letter-spacing:0.05em;text-transform:uppercase;color:rgba(255,255,255,0.28);font-weight:500;}
+</style>
+</head>
+<body>
+<header class="header">
+  <a href="index.html" style="text-decoration:none"><div class="logo-title"><span class="sf">Santa Fe </span><span class="hoy">Hoy</span></div></a>
+  <a href="index.html" class="back">← Volver</a>
+</header>
+
+<div class="hero">
+  <h1>Contacto</h1>
+  <p>Consultas, sugerencias y colaboraciones</p>
+</div>
+
+<div class="body">
+
+  <div class="contact-grid">
+    <a href="mailto:turismosantafehoy@gmail.com" class="contact-card">
+      <span class="contact-icon">✉️</span>
+      <div class="contact-info">
+        <div class="contact-titulo">Email</div>
+        <div class="contact-desc">turismosantafehoy@gmail.com</div>
+      </div>
+    </a>
+    <a href="https://wa.me/+54XXXXXXXXXX?text=Hola%2C+te+escribo+desde+Santa+Fe+Hoy" target="_blank" class="contact-card wa">
+      <span class="contact-icon">📱</span>
+      <div class="contact-info">
+        <div class="contact-titulo">WhatsApp</div>
+        <div class="contact-desc">Respuesta rápida · Consultas y colaboraciones</div>
+      </div>
+    </a>
+  </div>
+
+  <div class="divider-text">¿Por qué escribirnos?</div>
+
+  <div class="motivos-list">
+    <div class="motivo">🏨 <span>Sos hotelero y querés el QR de la guía en tu lobby</span></div>
+    <div class="motivo">🍽️ <span>Tenés un restaurante y querés aparecer en la guía</span></div>
+    <div class="motivo">🚤 <span>Ofrecés excursiones o actividades turísticas</span></div>
+    <div class="motivo">📍 <span>Querés sugerir un lugar que no está en la guía</span></div>
+    <div class="motivo">🤝 <span>Te interesa un acuerdo de afiliación o publicidad</span></div>
+    <div class="motivo">✏️ <span>Encontraste información incorrecta o desactualizada</span></div>
+  </div>
+
+  <h2>Sobre Santa Fe Hoy</h2>
+  <p>Somos una guía turística digital independiente de Santa Fe Capital. Nuestro objetivo es dar información honesta y útil a los turistas que llegan a la ciudad — sin spam, sin publicidad invasiva y con datos reales.</p>
+  <p>Si trabajás en el sector turístico de Santa Fe y querés colaborar, escribinos. Respondemos dentro de las 48 horas.</p>
+
+</div>
+
+<footer class="footer-legal">
+  <p>© 2025 Santa Fe Hoy · Guía Turística Digital · santafehoy.com.ar</p>
+  <div>
+    <a href="privacidad.html">Privacidad</a>
+    <a href="terminos.html">Términos</a>
+    <a href="contacto.html">Contacto</a>
+  </div>
+</footer>
+
+<nav class="bottom-nav">
+  <a href="index.html" class="nav-item"><span class="nav-icon">🏠</span><span class="nav-label">Inicio</span></a>
+  <a href="index.html#eventos" class="nav-item"><span class="nav-icon">📅</span><span class="nav-label">Agenda</span></a>
+  <a href="index.html#gastronomia" class="nav-item"><span class="nav-icon">🍽️</span><span class="nav-label">Comer</span></a>
+  <a href="index.html#tips" class="nav-item"><span class="nav-icon">💡</span><span class="nav-label">Tips</span></a>
+</nav>
+</body>
+</html>
