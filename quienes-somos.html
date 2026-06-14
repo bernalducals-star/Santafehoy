@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiénes Somos · Santa Fe Hoy</title>
+<meta name="description" content="Santa Fe Hoy es una guía turística digital independiente creada por santafesinos para ayudarte a descubrir lo mejor de Santa Fe Capital. Conocé nuestra historia y misión.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --verde: #1a5c3a;
+  --verde-oscuro: #0f3d26;
+  --dorado: #e8a020;
+  --dorado-claro: #f5c85a;
+  --arena: #faf7f2;
+  --blanco: #ffffff;
+  --texto: #1a1a1a;
+  --gris: #6b7280;
+  --gris-claro: #f3f0eb;
+  --borde: rgba(0,0,0,0.07);
+  --sombra: 0 2px 16px rgba(0,0,0,0.08);
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Plus Jakarta Sans',sans-serif; background:var(--arena); color:var(--texto); overflow-x:hidden; padding-bottom:80px; }
+
+/* HEADER */
+.header {
+  position:sticky; top:0; z-index:200;
+  background:rgba(250,247,242,0.96);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--borde);
+  padding:0.85rem 1.2rem;
+  display:flex; align-items:center; justify-content:space-between;
+}
+.logo-svg { display:flex; align-items:center; gap:9px; text-decoration:none; }
+.logo-title { font-weight:700; font-size:1.1rem; line-height:1; }
+.logo-title .sf { color:var(--verde-oscuro); }
+.logo-title .hoy { color:var(--dorado); }
+.logo-sub { font-size:0.48rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--verde); margin-top:2px; font-weight:600; }
+.btn-sm { background:var(--verde); color:white; border:none; padding:0.42rem 0.85rem; border-radius:100px; font-size:0.7rem; font-weight:600; cursor:pointer; font-family:inherit; text-decoration:none; display:inline-block; }
+
+/* HERO */
+.hero {
+  background:var(--verde-oscuro); padding:2.8rem 1.2rem 2.2rem;
+  position:relative; overflow:hidden; min-height:220px;
+  display:flex; flex-direction:column; justify-content:flex-end;
+}
+.hero::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 100% 80% at -10% 110%, rgba(26,92,58,0.7) 0%, transparent 55%),
+              radial-gradient(ellipse 60% 50% at 110% -10%, rgba(232,160,32,0.25) 0%, transparent 50%);
+}
+.hero-eyebrow { font-size:0.63rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--dorado-claro); margin-bottom:0.6rem; position:relative; display:flex; align-items:center; gap:0.5rem; }
+.hero-eyebrow::before { content:''; display:block; width:20px; height:1px; background:var(--dorado); }
+.hero h1 { font-family:'Playfair Display',serif; font-size:clamp(2rem,8vw,3.2rem); color:white; line-height:1.08; position:relative; margin-bottom:0.9rem; }
+.hero h1 em { font-style:italic; color:var(--dorado); }
+.hero-desc { font-size:0.86rem; color:rgba(255,255,255,0.62); line-height:1.6; max-width:300px; position:relative; }
+
+/* CONTENIDO */
+.section { padding:1.8rem 1.2rem; }
+.sec-label { font-size:0.58rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--verde); font-weight:600; display:block; margin-bottom:0.3rem; }
+.sec-title { font-family:'Playfair Display',serif; font-size:1.45rem; color:var(--verde-oscuro); line-height:1.1; margin-bottom:1.1rem; }
+.divider { height:1px; background:var(--borde); margin:0 1.2rem; }
+
+.prose { font-size:0.9rem; line-height:1.75; color:#333; }
+.prose p { margin-bottom:1rem; }
+.prose strong { color:var(--verde-oscuro); }
+
+/* VALORES */
+.valores-grid { display:grid; grid-template-columns:1fr 1fr; gap:0.65rem; margin-top:1.2rem; }
+.valor-card { background:white; border-radius:14px; border:1px solid var(--borde); padding:1.1rem 1rem; }
+.valor-icon { font-size:1.6rem; display:block; margin-bottom:0.5rem; }
+.valor-titulo { font-size:0.82rem; font-weight:700; color:var(--verde-oscuro); margin-bottom:0.25rem; }
+.valor-desc { font-size:0.72rem; color:var(--gris); line-height:1.5; }
+
+/* STAT STRIP */
+.stat-strip { background:var(--verde); padding:1.4rem 1.2rem; display:grid; grid-template-columns:repeat(3,1fr); gap:0.5rem; text-align:center; }
+.stat-num { font-family:'Playfair Display',serif; font-size:1.8rem; color:var(--dorado); font-weight:700; line-height:1; }
+.stat-label { font-size:0.62rem; color:rgba(255,255,255,0.7); text-transform:uppercase; letter-spacing:0.1em; margin-top:0.2rem; }
+
+/* CTA CONTACTO */
+.cta-card { background:white; border-radius:16px; border:1px solid var(--borde); padding:1.4rem 1.2rem; margin-top:1.2rem; text-align:center; }
+.cta-card h3 { font-family:'Playfair Display',serif; font-size:1.2rem; color:var(--verde-oscuro); margin-bottom:0.5rem; }
+.cta-card p { font-size:0.8rem; color:var(--gris); line-height:1.6; margin-bottom:1.1rem; }
+.btn-wa { display:inline-flex; align-items:center; gap:0.5rem; background:#25d366; color:white; border:none; padding:0.65rem 1.3rem; border-radius:100px; font-size:0.78rem; font-weight:600; cursor:pointer; font-family:inherit; text-decoration:none; }
+
+/* EQUIPO */
+.equipo-card { background:white; border-radius:14px; border:1px solid var(--borde); padding:1.1rem 1rem; display:flex; align-items:center; gap:1rem; margin-bottom:0.65rem; }
+.equipo-avatar { width:48px; height:48px; border-radius:50%; background:var(--verde-oscuro); display:flex; align-items:center; justify-content:center; font-size:1.4rem; flex-shrink:0; }
+.equipo-nombre { font-size:0.88rem; font-weight:700; color:var(--verde-oscuro); }
+.equipo-rol { font-size:0.72rem; color:var(--gris); margin-top:0.1rem; }
+
+/* FOOTER */
+.footer { background:var(--verde-oscuro); padding:2rem 1.2rem 1.5rem; text-align:center; }
+.footer-logo { font-family:'Playfair Display',serif; font-size:1.3rem; font-weight:700; margin-bottom:0.7rem; }
+.footer-logo .sf { color:white; }
+.footer-logo .hoy { color:var(--dorado); }
+.footer p { font-size:0.72rem; color:rgba(255,255,255,0.5); line-height:1.7; margin-bottom:1rem; }
+.footer-links { display:flex; flex-wrap:wrap; justify-content:center; gap:0.5rem 1.2rem; margin-bottom:1rem; }
+.footer-links a { font-size:0.72rem; color:rgba(255,255,255,0.6); text-decoration:none; }
+.footer-copy { font-size:0.62rem; color:rgba(255,255,255,0.3); }
+
+/* BOTTOM NAV */
+.bottom-nav { position:fixed; bottom:0; left:0; right:0; background:rgba(250,247,242,0.97); backdrop-filter:blur(12px); border-top:1px solid var(--borde); display:flex; z-index:200; }
+.nav-item { flex:1; display:flex; flex-direction:column; align-items:center; padding:0.55rem 0 0.45rem; text-decoration:none; gap:2px; }
+.nav-icon { font-size:1.1rem; }
+.nav-label { font-size:0.58rem; font-weight:600; color:var(--gris); letter-spacing:0.03em; }
+
+/* FADE */
+.fade-up { opacity:0; transform:translateY(18px); transition:opacity 0.5s ease, transform 0.5s ease; }
+.fade-up.in { opacity:1; transform:none; }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <a href="/" class="logo-svg">
+    <div>
+      <div class="logo-title"><span class="sf">Santa Fe </span><span class="hoy">Hoy</span></div>
+      <div class="logo-sub">Guía Turística</div>
+    </div>
+  </a>
+  <a href="/contacto.html" class="btn-sm">Contacto</a>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">Nuestra historia</div>
+  <h1>Hechos con <em>amor</em><br>en Santa Fe</h1>
+  <p class="hero-desc">Una guía independiente creada por santafesinos para que descubras todo lo que esta ciudad tiene para ofrecer.</p>
+</div>
+
+<!-- STATS -->
+<div class="stat-strip">
+  <div><div class="stat-num">20+</div><div class="stat-label">Guías locales</div></div>
+  <div><div class="stat-num">100%</div><div class="stat-label">Independiente</div></div>
+  <div><div class="stat-num">0</div><div class="stat-label">Publicidad pagada</div></div>
+</div>
+
+<!-- QUIÉNES SOMOS -->
+<section class="section fade-up">
+  <span class="sec-label">Nuestra misión</span>
+  <h2 class="sec-title">¿Qué es Santa Fe Hoy?</h2>
+  <div class="prose">
+    <p><strong>Santa Fe Hoy</strong> es una guía turística digital independiente dedicada a Santa Fe Capital. Nació con un objetivo simple: que visitantes y locales tengan en un solo lugar toda la información que necesitan para disfrutar la ciudad.</p>
+    <p>No somos un organismo oficial ni dependemos de ningún gobierno. Somos un equipo de santafesinos apasionados por nuestra ciudad que decidimos crear la guía que siempre quisimos tener.</p>
+    <p>Desde la <strong>Costanera Este</strong> hasta las <strong>islas del Paraná</strong>, desde el mejor surubí hasta los hoteles más cómodos — acá encontrás todo curado por gente que vive y respira Santa Fe.</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- VALORES -->
+<section class="section fade-up">
+  <span class="sec-label">Lo que nos mueve</span>
+  <h2 class="sec-title">Nuestros valores</h2>
+  <div class="valores-grid">
+    <div class="valor-card">
+      <span class="valor-icon">🎯</span>
+      <div class="valor-titulo">Información real</div>
+      <div class="valor-desc">Solo recomendamos lo que conocemos. Sin relleno ni datos inventados.</div>
+    </div>
+    <div class="valor-card">
+      <span class="valor-icon">🏙️</span>
+      <div class="valor-titulo">100% local</div>
+      <div class="valor-desc">Escrito por santafesinos que viven la ciudad todos los días.</div>
+    </div>
+    <div class="valor-card">
+      <span class="valor-icon">⚡</span>
+      <div class="valor-titulo">Siempre actualizado</div>
+      <div class="valor-desc">Eventos, precios y lugares revisados constantemente para darte info fresca.</div>
+    </div>
+    <div class="valor-card">
+      <span class="valor-icon">📱</span>
+      <div class="valor-titulo">Pensado para móvil</div>
+      <div class="valor-desc">Diseñado para que lo uses en la calle, en el momento que lo necesitás.</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EQUIPO -->
+<section class="section fade-up">
+  <span class="sec-label">Detrás del sitio</span>
+  <h2 class="sec-title">El equipo</h2>
+  <div class="equipo-card">
+    <div class="equipo-avatar">✍️</div>
+    <div>
+      <div class="equipo-nombre">Equipo editorial</div>
+      <div class="equipo-rol">Redacción, investigación y curaduría de contenidos</div>
+    </div>
+  </div>
+  <div class="equipo-card">
+    <div class="equipo-avatar">📸</div>
+    <div>
+      <div class="equipo-nombre">Colaboradores locales</div>
+      <div class="equipo-rol">Turistas, guías y santafesinos que comparten su experiencia</div>
+    </div>
+  </div>
+  <div class="equipo-card">
+    <div class="equipo-avatar">💻</div>
+    <div>
+      <div class="equipo-nombre">Desarrollo web</div>
+      <div class="equipo-rol">Tecnología y mantenimiento de la plataforma digital</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACTO CTA -->
+<section class="section fade-up">
+  <div class="cta-card">
+    <h3>¿Querés sumarte o proponer un lugar?</h3>
+    <p>Si tenés un negocio, emprendimiento o simplemente querés recomendarnos un rincón de Santa Fe que amás, escribinos. Nos encanta descubrir nueva info de la ciudad.</p>
+    <a href="https://wa.me/+54XXXXXXXXXX?text=Hola%2C+quiero+contactarme+con+Santa+Fe+Hoy" class="btn-wa">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Escribinos por WhatsApp
+    </a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-logo"><span class="sf">Santa Fe </span><span class="hoy">Hoy</span></div>
+  <p>Guía turística independiente de Santa Fe Capital.<br>Datos reales, actualizados por locales. Hecho con ❤️ en Santa Fe.</p>
+  <div class="footer-links">
+    <a href="/">Inicio</a>
+    <a href="/quienes-somos.html">Quiénes somos</a>
+    <a href="/contacto.html">Contacto</a>
+    <a href="/privacidad.html">Privacidad</a>
+    <a href="/terminos.html">Términos</a>
+  </div>
+  <div class="footer-copy">© 2025 Santa Fe Hoy · santafehoy.com.ar</div>
+</footer>
+
+<nav class="bottom-nav">
+  <a href="/" class="nav-item"><span class="nav-icon">🏠</span><span class="nav-label">Inicio</span></a>
+  <a href="/#eventos" class="nav-item"><span class="nav-icon">📅</span><span class="nav-label">Agenda</span></a>
+  <a href="/#gastronomia" class="nav-item"><span class="nav-icon">🍽️</span><span class="nav-label">Comer</span></a>
+  <a href="/#tips" class="nav-item"><span class="nav-icon">💡</span><span class="nav-label">Tips</span></a>
+</nav>
+
+<script>
+const obs = new IntersectionObserver(e=>e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('in');obs.unobserve(el.target);}}),{threshold:0.08});
+document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
