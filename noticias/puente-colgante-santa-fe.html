@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Puente Colgante Santa Fe · Historia, Cómo Llegar y Qué Ver</title>
+<meta name="description" content="Todo sobre el Puente Colgante de Santa Fe. Historia, horarios, cómo llegar y qué hacer en sus alrededores. El ícono de la ciudad.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--verde:#1a5c3a;--verde-oscuro:#0f3d26;--dorado:#e8a020;--dorado-claro:#f5c85a;--arena:#faf7f2;--blanco:#ffffff;--texto:#1a1a1a;--gris:#6b7280;--gris-claro:#f3f0eb;--borde:rgba(0,0,0,0.07);--sombra:0 2px 16px rgba(0,0,0,0.08);}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--arena);color:var(--texto);overflow-x:hidden;padding-bottom:80px;}
+.header{position:sticky;top:0;z-index:200;background:rgba(250,247,242,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--borde);padding:0.85rem 1.2rem;display:flex;align-items:center;justify-content:space-between;}
+.logo-svg{display:flex;align-items:center;gap:9px;text-decoration:none;}
+.logo-title{font-weight:700;font-size:1.1rem;line-height:1;}
+.logo-title .sf{color:var(--verde-oscuro);}
+.logo-title .hoy{color:var(--dorado);}
+.logo-sub{font-size:0.48rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--verde);margin-top:2px;font-weight:600;}
+.btn-sm{background:var(--verde);color:white;border:none;padding:0.42rem 0.85rem;border-radius:100px;font-size:0.7rem;font-weight:600;cursor:pointer;font-family:inherit;text-decoration:none;display:inline-block;}
+.hero{background:var(--verde-oscuro);padding:2.8rem 1.2rem 2.2rem;position:relative;overflow:hidden;min-height:240px;display:flex;flex-direction:column;justify-content:flex-end;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 100% 80% at -10% 110%,rgba(26,92,58,0.7) 0%,transparent 55%),radial-gradient(ellipse 60% 50% at 110% -10%,rgba(232,160,32,0.25) 0%,transparent 50%);}
+.hero-eyebrow{font-size:0.63rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--dorado-claro);margin-bottom:0.6rem;position:relative;display:flex;align-items:center;gap:0.5rem;}
+.hero-eyebrow::before{content:'';display:block;width:20px;height:1px;background:var(--dorado);}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,8vw,3rem);color:white;line-height:1.08;position:relative;margin-bottom:0.9rem;}
+.hero h1 em{font-style:italic;color:var(--dorado);}
+.hero-desc{font-size:0.86rem;color:rgba(255,255,255,0.62);line-height:1.6;max-width:300px;position:relative;}
+.section{padding:1.8rem 1.2rem;}
+.sec-label{font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--verde);font-weight:600;display:block;margin-bottom:0.3rem;}
+.sec-title{font-family:'Playfair Display',serif;font-size:1.45rem;color:var(--verde-oscuro);line-height:1.1;margin-bottom:1rem;}
+.divider{height:1px;background:var(--borde);margin:0 1.2rem;}
+.prose{font-size:0.9rem;line-height:1.75;color:#333;}
+.prose p{margin-bottom:1rem;}
+.prose strong{color:var(--verde-oscuro);}
+.dato-card{background:white;border-radius:14px;border:1px solid var(--borde);padding:1rem;margin-bottom:0.65rem;display:flex;gap:0.8rem;align-items:center;}
+.dato-icon{font-size:1.4rem;flex-shrink:0;}
+.dato-titulo{font-size:0.78rem;font-weight:700;color:var(--verde-oscuro);}
+.dato-valor{font-size:0.78rem;color:#555;}
+.tip-card{background:var(--verde);border-radius:14px;padding:1.1rem;margin-top:0.65rem;}
+.tip-card p{font-size:0.82rem;color:rgba(255,255,255,0.9);line-height:1.6;}
+.tip-card strong{color:var(--dorado-claro);}
+.fade-up{opacity:0;transform:translateY(18px);transition:opacity 0.5s ease,transform 0.5s ease;}
+.fade-up.in{opacity:1;transform:none;}
+.footer{background:var(--verde-oscuro);padding:2rem 1.2rem 1.5rem;text-align:center;}
+.footer-logo{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;margin-bottom:0.7rem;}
+.footer-logo .sf{color:white;}
+.footer-logo .hoy{color:var(--dorado);}
+.footer p{font-size:0.72rem;color:rgba(255,255,255,0.5);line-height:1.7;margin-bottom:1rem;}
+.footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:0.5rem 1.2rem;margin-bottom:1rem;}
+.footer-links a{font-size:0.72rem;color:rgba(255,255,255,0.6);text-decoration:none;}
+.footer-copy{font-size:0.62rem;color:rgba(255,255,255,0.3);}
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:rgba(250,247,242,0.97);backdrop-filter:blur(12px);border-top:1px solid var(--borde);display:flex;z-index:200;}
+.nav-item{flex:1;display:flex;flex-direction:column;align-items:center;padding:0.55rem 0 0.45rem;text-decoration:none;gap:2px;}
+.nav-icon{font-size:1.1rem;}
+.nav-label{font-size:0.58rem;font-weight:600;color:var(--gris);letter-spacing:0.03em;}
+</style>
+</head>
+<body>
+<header class="header">
+  <a href="/" class="logo-svg"><div><div class="logo-title"><span class="sf">Santa Fe </span><span class="hoy">Hoy</span></div><div class="logo-sub">Guía Turística</div></div></a>
+  <a href="/contacto.html" class="btn-sm">Contacto</a>
+</header>
+<div class="hero">
+  <div class="hero-eyebrow">Ícono de la ciudad</div>
+  <h1>El <em>Puente<br>Colgante</em> de Santa Fe</h1>
+  <p class="hero-desc">Historia, datos y todo lo que necesitás saber para visitar el símbolo más reconocido de Santa Fe Capital.</p>
+</div>
+<section class="section fade-up">
+  <span class="sec-label">Un símbolo santafesino</span>
+  <h2 class="sec-title">¿Qué es el Puente Colgante?</h2>
+  <div class="prose">
+    <p>El Puente Colgante es el símbolo más icónico de Santa Fe Capital. Inaugurado en <strong>1928</strong>, fue durante décadas el único puente que unía Santa Fe con Santo Tomé sobre el río Quiloazas (un brazo del Paraná).</p>
+    <p>Hoy es un <strong>puente peatonal y patrimonial</strong>, protegido como bien histórico. Caminar por él con el río abajo y la ciudad en el horizonte es una de las experiencias que ningún visitante debería perderse.</p>
+  </div>
+</section>
+<div class="divider"></div>
+<section class="section fade-up">
+  <span class="sec-label">Datos útiles</span>
+  <h2 class="sec-title">Lo que necesitás saber</h2>
+  <div class="dato-card"><div class="dato-icon">📅</div><div><div class="dato-titulo">Cuándo fue inaugurado</div><div class="dato-valor">1928 · casi 100 años de historia</div></div></div>
+  <div class="dato-card"><div class="dato-icon">📏</div><div><div class="dato-titulo">Longitud</div><div class="dato-valor">245 metros de largo</div></div></div>
+  <div class="dato-card"><div class="dato-icon">🚶</div><div><div class="dato-titulo">Acceso</div><div class="dato-valor">Peatonal y en bicicleta · gratuito</div></div></div>
+  <div class="dato-card"><div class="dato-icon">📍</div><div><div class="dato-titulo">Cómo llegar</div><div class="dato-valor">Desde la Costanera Este, sobre Av. Almirante Brown. Colectivos 1, 4 y 16 pasan cerca.</div></div></div>
+  <div class="dato-card"><div class="dato-icon">🌅</div><div><div class="dato-titulo">Mejor momento para visitarlo</div><div class="dato-valor">Atardecer · la luz sobre el río es espectacular desde las 18:00 en verano</div></div></div>
+  <div class="tip-card">
+    <p><strong>💡 Tip local:</strong> Cruzá el puente caminando hasta Santo Tomé y tomá algo en algún bar de la costanera santotomesina. El regreso al atardecer con la vista de Santa Fe desde el otro lado es imperdible.</p>
+  </div>
+</section>
+<div class="divider"></div>
+<section class="section fade-up">
+  <span class="sec-label">Qué hay alrededor</span>
+  <h2 class="sec-title">La zona del puente</h2>
+  <div class="prose">
+    <p>El acceso al puente está sobre la <strong>Costanera Este</strong>, una de las zonas más agradables de Santa Fe para caminar o andar en bici. Hay bares, restaurantes y espacios verdes a lo largo del paseo.</p>
+    <p>A pocos metros está el <strong>Puerto de Santa Fe</strong> y la zona del Molino Marconetti, un edificio histórico reciclado en espacio cultural. Es una tarde completa solo en esta zona.</p>
+  </div>
+</section>
+<footer class="footer">
+  <div class="footer-logo"><span class="sf">Santa Fe </span><span class="hoy">Hoy</span></div>
+  <p>Guía turística independiente de Santa Fe Capital.<br>Hecho con ❤️ en Santa Fe.</p>
+  <div class="footer-links"><a href="/">Inicio</a><a href="/quienes-somos.html">Quiénes somos</a><a href="/contacto.html">Contacto</a><a href="/privacidad.html">Privacidad</a></div>
+  <div class="footer-copy">© 2026 Santa Fe Hoy · santafehoy.com.ar</div>
+</footer>
+<nav class="bottom-nav">
+  <a href="/" class="nav-item"><span class="nav-icon">🏠</span><span class="nav-label">Inicio</span></a>
+  <a href="/#eventos" class="nav-item"><span class="nav-icon">📅</span><span class="nav-label">Agenda</span></a>
+  <a href="/#gastronomia" class="nav-item"><span class="nav-icon">🍽️</span><span class="nav-label">Comer</span></a>
+  <a href="/#tips" class="nav-item"><span class="nav-icon">💡</span><span class="nav-label">Tips</span></a>
+</nav>
+<script>const obs=new IntersectionObserver(e=>e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('in');obs.unobserve(el.target);}}),{threshold:0.08});document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));</script>
+</body>
+</html>

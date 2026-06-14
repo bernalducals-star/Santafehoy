@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cómo Moverse en Santa Fe Capital · Transporte y Tips 2026</title>
+<meta name="description" content="Guía de transporte en Santa Fe Capital. Colectivos, taxis, remises, bicicletas y cómo moverse por la ciudad de forma fácil y económica.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--verde:#1a5c3a;--verde-oscuro:#0f3d26;--dorado:#e8a020;--dorado-claro:#f5c85a;--arena:#faf7f2;--blanco:#ffffff;--texto:#1a1a1a;--gris:#6b7280;--gris-claro:#f3f0eb;--borde:rgba(0,0,0,0.07);--sombra:0 2px 16px rgba(0,0,0,0.08);}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--arena);color:var(--texto);overflow-x:hidden;padding-bottom:80px;}
+.header{position:sticky;top:0;z-index:200;background:rgba(250,247,242,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--borde);padding:0.85rem 1.2rem;display:flex;align-items:center;justify-content:space-between;}
+.logo-svg{display:flex;align-items:center;gap:9px;text-decoration:none;}
+.logo-title{font-weight:700;font-size:1.1rem;line-height:1;}
+.logo-title .sf{color:var(--verde-oscuro);}
+.logo-title .hoy{color:var(--dorado);}
+.logo-sub{font-size:0.48rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--verde);margin-top:2px;font-weight:600;}
+.btn-sm{background:var(--verde);color:white;border:none;padding:0.42rem 0.85rem;border-radius:100px;font-size:0.7rem;font-weight:600;cursor:pointer;font-family:inherit;text-decoration:none;display:inline-block;}
+.hero{background:var(--verde-oscuro);padding:2.8rem 1.2rem 2.2rem;position:relative;overflow:hidden;min-height:240px;display:flex;flex-direction:column;justify-content:flex-end;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 100% 80% at -10% 110%,rgba(26,92,58,0.7) 0%,transparent 55%),radial-gradient(ellipse 60% 50% at 110% -10%,rgba(232,160,32,0.25) 0%,transparent 50%);}
+.hero-eyebrow{font-size:0.63rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--dorado-claro);margin-bottom:0.6rem;position:relative;display:flex;align-items:center;gap:0.5rem;}
+.hero-eyebrow::before{content:'';display:block;width:20px;height:1px;background:var(--dorado);}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,8vw,3rem);color:white;line-height:1.08;position:relative;margin-bottom:0.9rem;}
+.hero h1 em{font-style:italic;color:var(--dorado);}
+.hero-desc{font-size:0.86rem;color:rgba(255,255,255,0.62);line-height:1.6;max-width:300px;position:relative;}
+.section{padding:1.8rem 1.2rem;}
+.sec-label{font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--verde);font-weight:600;display:block;margin-bottom:0.3rem;}
+.sec-title{font-family:'Playfair Display',serif;font-size:1.45rem;color:var(--verde-oscuro);line-height:1.1;margin-bottom:1rem;}
+.divider{height:1px;background:var(--borde);margin:0 1.2rem;}
+.prose{font-size:0.9rem;line-height:1.75;color:#333;}
+.prose p{margin-bottom:1rem;}
+.prose strong{color:var(--verde-oscuro);}
+.transporte-card{background:white;border-radius:14px;border:1px solid var(--borde);padding:1.1rem;margin-bottom:0.65rem;}
+.transporte-header{display:flex;align-items:center;gap:0.7rem;margin-bottom:0.5rem;}
+.transporte-icon{font-size:1.5rem;}
+.transporte-nombre{font-size:0.92rem;font-weight:700;color:var(--verde-oscuro);}
+.transporte-precio{font-size:0.7rem;color:var(--verde);font-weight:600;background:rgba(26,92,58,0.08);padding:0.15rem 0.45rem;border-radius:100px;}
+.transporte-desc{font-size:0.78rem;color:#555;line-height:1.5;}
+.transporte-pros{font-size:0.72rem;color:var(--verde);margin-top:0.3rem;font-weight:500;}
+.tip-card{background:var(--verde);border-radius:14px;padding:1.1rem;margin-top:0.65rem;}
+.tip-card p{font-size:0.82rem;color:rgba(255,255,255,0.9);line-height:1.6;}
+.tip-card strong{color:var(--dorado-claro);}
+.fade-up{opacity:0;transform:translateY(18px);transition:opacity 0.5s ease,transform 0.5s ease;}
+.fade-up.in{opacity:1;transform:none;}
+.footer{background:var(--verde-oscuro);padding:2rem 1.2rem 1.5rem;text-align:center;}
+.footer-logo{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;margin-bottom:0.7rem;}
+.footer-logo .sf{color:white;}
+.footer-logo .hoy{color:var(--dorado);}
+.footer p{font-size:0.72rem;color:rgba(255,255,255,0.5);line-height:1.7;margin-bottom:1rem;}
+.footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:0.5rem 1.2rem;margin-bottom:1rem;}
+.footer-links a{font-size:0.72rem;color:rgba(255,255,255,0.6);text-decoration:none;}
+.footer-copy{font-size:0.62rem;color:rgba(255,255,255,0.3);}
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:rgba(250,247,242,0.97);backdrop-filter:blur(12px);border-top:1px solid var(--borde);display:flex;z-index:200;}
+.nav-item{flex:1;display:flex;flex-direction:column;align-items:center;padding:0.55rem 0 0.45rem;text-decoration:none;gap:2px;}
+.nav-icon{font-size:1.1rem;}
+.nav-label{font-size:0.58rem;font-weight:600;color:var(--gris);letter-spacing:0.03em;}
+</style>
+</head>
+<body>
+<header class="header">
+  <a href="/" class="logo-svg"><div><div class="logo-title"><span class="sf">Santa Fe </span><span class="hoy">Hoy</span></div><div class="logo-sub">Guía Turística</div></div></a>
+  <a href="/contacto.html" class="btn-sm">Contacto</a>
+</header>
+<div class="hero">
+  <div class="hero-eyebrow">Moverse por la ciudad</div>
+  <h1>Transporte en<br><em>Santa Fe</em> Capital</h1>
+  <p class="hero-desc">Colectivos, taxis, remises y bici. Todo lo que necesitás para moverte por Santa Fe de forma fácil y económica.</p>
+</div>
+<section class="section fade-up">
+  <span class="sec-label">Una ciudad manejable</span>
+  <h2 class="sec-title">Cómo es moverse en Santa Fe</h2>
+  <div class="prose">
+    <p>Santa Fe es una ciudad de tamaño medio que se puede recorrer perfectamente <strong>sin auto</strong>. El centro es compacto, los principales atractivos están a distancia caminable entre sí, y el transporte público funciona bien.</p>
+    <p>Para los turistas, la combinación de <strong>colectivo + bici + caminata</strong> cubre el 95% de las necesidades. Los remises son baratos para trayectos nocturnos o cuando querés más comodidad.</p>
+  </div>
+</section>
+<div class="divider"></div>
+<section class="section fade-up">
+  <span class="sec-label">Opciones disponibles</span>
+  <h2 class="sec-title">Medios de transporte</h2>
+  <div class="transporte-card">
+    <div class="transporte-header"><div class="transporte-icon">🚌</div><div class="transporte-nombre">Colectivos urbanos</div><span class="transporte-precio">Económico</span></div>
+    <div class="transporte-desc">Santa Fe tiene una red de colectivos urbanos que cubre toda la ciudad. Se paga con tarjeta SUBE o tarjeta local. Las líneas más útiles para turistas son la 1 (Costanera-Centro), 4 y 16.</div>
+    <div class="transporte-pros">✓ Barato · ✓ Llega a todos los barrios · ✗ Frecuencia irregular de noche</div>
+  </div>
+  <div class="transporte-card">
+    <div class="transporte-header"><div class="transporte-icon">🚕</div><div class="transporte-nombre">Taxis y remises</div><span class="transporte-precio">Medio</span></div>
+    <div class="transporte-desc">Abundantes en el centro. Los taxis tienen taxímetro, los remises precio fijo por zona. Para viajes nocturnos o con equipaje son la mejor opción. Pedí por WhatsApp a remiserías locales o usá la app InDriver.</div>
+    <div class="transporte-pros">✓ Comodidad · ✓ Disponibilidad nocturna · ✗ Más caro que el colectivo</div>
+  </div>
+  <div class="transporte-card">
+    <div class="transporte-header"><div class="transporte-icon">🚲</div><div class="transporte-nombre">Bicicletas</div><span class="transporte-precio">Muy económico</span></div>
+    <div class="transporte-desc">Santa Fe tiene ciclovías en varias arterias del centro. Muchos hoteles ofrecen bicicletas gratuitas a sus huéspedes. La ciudad es bastante plana y pedalear es cómodo.</div>
+    <div class="transporte-pros">✓ Ideal para Costanera y centro · ✓ Gratis en muchos hoteles · ✗ No recomendado de noche</div>
+  </div>
+  <div class="transporte-card">
+    <div class="transporte-header"><div class="transporte-icon">🚶</div><div class="transporte-nombre">Caminando</div><span class="transporte-precio">Gratis</span></div>
+    <div class="transporte-desc">El centro histórico de Santa Fe es perfectamente recorrible a pie. Del Puente Colgante a la Peatonal San Martín hay unos 20 minutos caminando por la Costanera. Muy recomendable.</div>
+    <div class="transporte-pros">✓ La mejor manera de conocer el centro · ✓ Todo cerca · ✗ No para zonas alejadas</div>
+  </div>
+  <div class="tip-card">
+    <p><strong>💡 Tip local:</strong> Si llegás en micro a la Terminal de Ómnibus (Belgrano 2910), el centro está a solo 10 minutos en taxi o 3 paradas en colectivo. No pagues transfer de hotel si no es necesario.</p>
+  </div>
+</section>
+<footer class="footer">
+  <div class="footer-logo"><span class="sf">Santa Fe </span><span class="hoy">Hoy</span></div>
+  <p>Guía turística independiente de Santa Fe Capital.<br>Hecho con ❤️ en Santa Fe.</p>
+  <div class="footer-links"><a href="/">Inicio</a><a href="/quienes-somos.html">Quiénes somos</a><a href="/contacto.html">Contacto</a><a href="/privacidad.html">Privacidad</a></div>
+  <div class="footer-copy">© 2026 Santa Fe Hoy · santafehoy.com.ar</div>
+</footer>
+<nav class="bottom-nav">
+  <a href="/" class="nav-item"><span class="nav-icon">🏠</span><span class="nav-label">Inicio</span></a>
+  <a href="/#eventos" class="nav-item"><span class="nav-icon">📅</span><span class="nav-label">Agenda</span></a>
+  <a href="/#gastronomia" class="nav-item"><span class="nav-icon">🍽️</span><span class="nav-label">Comer</span></a>
+  <a href="/#tips" class="nav-item"><span class="nav-icon">💡</span><span class="nav-label">Tips</span></a>
+</nav>
+<script>const obs=new IntersectionObserver(e=>e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('in');obs.unobserve(el.target);}}),{threshold:0.08});document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));</script>
+</body>
+</html>
