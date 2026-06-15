@@ -679,14 +679,24 @@ async function cargarEventos() {
       </a>`;
     }).join('');
   } catch {
-    const fb = [
-      {dia:7,mes:'Jun',tag:'Cultura',n:'Feria del Libro Santa Fe 2025',l:'Predio Ferial Ciudad'},
-      {dia:14,mes:'Jun',tag:'Gastronomía',n:'Festival del Surubí',l:'Costanera Este'},
-      {dia:21,mes:'Jun',tag:'Música',n:'Noche de Jazz en el Molino',l:'Molino Marconetti'},
-      {dia:28,mes:'Jun',tag:'Deporte',n:'Regata del Paraná',l:'Puerto Santa Fe'},
+    const hoy = new Date();
+    const todos = [
+      {fecha:new Date(2026,5,15),tag:'Deportes',n:'Maratón Ciudad de Santa Fe',l:'Costanera Este'},
+      {fecha:new Date(2026,5,20),tag:'Cultura',n:'Festival Internacional de Jazz',l:'Molino Marconetti'},
+      {fecha:new Date(2026,5,21),tag:'Gastronomía',n:'Noche de la Gastronomía Santafesina',l:'Peatonal San Martín'},
+      {fecha:new Date(2026,5,25),tag:'Arte',n:'Exposición de Arte Contemporáneo',l:'Museo Provincial de Bellas Artes'},
+      {fecha:new Date(2026,5,28),tag:'Deporte',n:'Regata del Paraná 2026',l:'Puerto Santa Fe'},
+      {fecha:new Date(2026,6,4),tag:'Música',n:'Concierto de Verano en el Parque',l:'Parque del Sur'},
+      {fecha:new Date(2026,6,9),tag:'Cultura',n:'Día de la Independencia — Actos oficiales',l:'Plaza 25 de Mayo'},
+      {fecha:new Date(2026,6,12),tag:'Gastronomía',n:'Festival del Surubí',l:'Costanera Este'},
+      {fecha:new Date(2026,6,18),tag:'Deporte',n:'Torneo de Remo del Litoral',l:'Puerto Santa Fe'},
+      {fecha:new Date(2026,6,25),tag:'Familia',n:'Feria de Ciencias Juveniles',l:'Predio Ferial Ciudad'},
     ];
-    c.innerHTML = fb.map(e=>`<div class="evento-card">
-      <div class="evento-fecha"><div class="evento-dia">${e.dia}</div><div class="evento-mes">${e.mes}</div></div>
+    const meses2 = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+    const proximos = todos.filter(e => e.fecha >= hoy).slice(0,4);
+    const mostrar = proximos.length ? proximos : todos.slice(0,4);
+    c.innerHTML = mostrar.map(e=>`<div class="evento-card">
+      <div class="evento-fecha"><div class="evento-dia">${e.fecha.getDate()}</div><div class="evento-mes">${meses2[e.fecha.getMonth()]}</div></div>
       <div class="evento-body"><span class="evento-tag">${e.tag}</span><div class="evento-nombre">${e.n}</div><div class="evento-lugar">📍 ${e.l}</div></div>
     </div>`).join('')+`<p style="font-size:0.68rem;color:var(--gris);text-align:center;padding:0.6rem 0"><a href="https://www.santafe.tur.ar/eventos/" target="_blank" style="color:var(--verde)">Ver agenda completa en santafe.tur.ar →</a></p>`;
   }
