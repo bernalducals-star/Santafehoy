@@ -43,6 +43,35 @@ body { font-family:'Plus Jakarta Sans',sans-serif; background:var(--arena); colo
 .logo-sub { font-size:0.48rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--verde); margin-top:2px; font-weight:600; }
 .btn-sm { background:var(--verde); color:white; border:none; padding:0.42rem 0.85rem; border-radius:100px; font-size:0.7rem; font-weight:600; cursor:pointer; font-family:inherit; }
 
+/* MENÚ HAMBURGUESA */
+.hamburger { background:none; border:none; cursor:pointer; padding:0.3rem; display:flex; flex-direction:column; gap:5px; }
+.hamburger span { display:block; width:22px; height:2px; background:var(--verde-oscuro); border-radius:2px; transition:all 0.3s; }
+.hamburger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity:0; }
+.hamburger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+
+.menu-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.4); z-index:199; opacity:0; pointer-events:none; transition:opacity 0.25s; }
+.menu-overlay.open { opacity:1; pointer-events:all; }
+
+.menu-drawer { position:fixed; top:0; right:-100%; width:min(320px, 90vw); height:100vh; background:var(--arena); z-index:300; transition:right 0.3s; overflow-y:auto; padding-bottom:2rem; }
+.menu-drawer.open { right:0; }
+
+.menu-header { display:flex; align-items:center; justify-content:space-between; padding:1rem 1.2rem; border-bottom:1px solid var(--borde); position:sticky; top:0; background:var(--arena); z-index:1; }
+.menu-logo { font-weight:700; font-size:1rem; }
+.menu-logo .sf { color:var(--verde-oscuro); }
+.menu-logo .hoy { color:var(--dorado); }
+.menu-close { background:none; border:none; cursor:pointer; font-size:1.3rem; color:var(--gris); padding:0.2rem; }
+
+.menu-cat { padding:1rem 1.2rem 0.4rem; }
+.menu-cat-title { font-size:0.55rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--verde); font-weight:700; margin-bottom:0.6rem; display:flex; align-items:center; gap:0.4rem; }
+.menu-cat-title::after { content:''; flex:1; height:1px; background:var(--borde); }
+
+.menu-item { display:flex; align-items:center; gap:0.7rem; padding:0.6rem 0.5rem; border-radius:10px; text-decoration:none; color:var(--texto); font-size:0.83rem; font-weight:500; transition:background 0.15s; }
+.menu-item:hover { background:rgba(26,92,58,0.06); }
+.menu-item-icon { font-size:1rem; width:24px; text-align:center; flex-shrink:0; }
+.menu-item-text { line-height:1.2; }
+.menu-item-sub { font-size:0.65rem; color:var(--gris); font-weight:400; }
+
 /* HERO */
 .hero {
   background:var(--verde-oscuro); padding:2.8rem 1.2rem 2.2rem;
@@ -227,6 +256,52 @@ body { font-family:'Plus Jakarta Sans',sans-serif; background:var(--arena); colo
 </head>
 <body>
 
+<!-- OVERLAY -->
+<div class="menu-overlay" id="menuOverlay"></div>
+
+<!-- MENÚ DRAWER -->
+<div class="menu-drawer" id="menuDrawer">
+  <div class="menu-header">
+    <div class="menu-logo"><span class="sf">Santa Fe </span><span class="hoy">Hoy</span></div>
+    <button class="menu-close" id="menuClose">✕</button>
+  </div>
+
+  <div class="menu-cat">
+    <div class="menu-cat-title">🗺️ Explorar</div>
+    <a href="noticias/que-hacer-santa-fe.html" class="menu-item"><span class="menu-item-icon">🎯</span><div class="menu-item-text">Qué hacer en Santa Fe<div class="menu-item-sub">Actividades y atracciones</div></div></a>
+    <a href="noticias/costanera-santa-fe.html" class="menu-item"><span class="menu-item-icon">🌊</span><div class="menu-item-text">La Costanera<div class="menu-item-sub">El paseo más icónico</div></div></a>
+    <a href="noticias/museos-santa-fe.html" class="menu-item"><span class="menu-item-icon">🏛️</span><div class="menu-item-text">Museos<div class="menu-item-sub">Historia y cultura</div></div></a>
+    <a href="noticias/puente-colgante-santa-fe.html" class="menu-item"><span class="menu-item-icon">🌉</span><div class="menu-item-text">Puente Colgante<div class="menu-item-sub">Símbolo de la ciudad</div></div></a>
+    <a href="noticias/playa-santa-fe.html" class="menu-item"><span class="menu-item-icon">🏖️</span><div class="menu-item-text">Playas<div class="menu-item-sub">Río Paraná</div></div></a>
+    <a href="noticias/excursiones-islas-parana.html" class="menu-item"><span class="menu-item-icon">🛶</span><div class="menu-item-text">Excursiones a las islas<div class="menu-item-sub">Aventura en el delta</div></div></a>
+    <a href="noticias/carnaval-santa-fe.html" class="menu-item"><span class="menu-item-icon">🎉</span><div class="menu-item-text">Carnaval<div class="menu-item-sub">Fiestas y eventos</div></div></a>
+    <a href="noticias/atardecer-santa-fe.html" class="menu-item"><span class="menu-item-icon">🌅</span><div class="menu-item-text">Mejores atardeceres<div class="menu-item-sub">Los spots imperdibles</div></div></a>
+    <a href="noticias/santa-fe-con-chicos.html" class="menu-item"><span class="menu-item-icon">👨‍👧</span><div class="menu-item-text">Santa Fe con chicos<div class="menu-item-sub">Turismo familiar</div></div></a>
+    <a href="noticias/mercado-norte-santa-fe.html" class="menu-item"><span class="menu-item-icon">🛒</span><div class="menu-item-text">Mercado Norte<div class="menu-item-sub">Sabores locales</div></div></a>
+  </div>
+
+  <div class="menu-cat">
+    <div class="menu-cat-title">🍽️ Comer</div>
+    <a href="noticias/gastronomia-tipica-santa-fe.html" class="menu-item"><span class="menu-item-icon">🐟</span><div class="menu-item-text">Gastronomía típica<div class="menu-item-sub">Lo que hay que probar</div></div></a>
+    <a href="noticias/restaurantes-santa-fe.html" class="menu-item"><span class="menu-item-icon">🍴</span><div class="menu-item-text">Mejores restaurantes<div class="menu-item-sub">Por zona y tipo</div></div></a>
+    <a href="noticias/que-comprar-santa-fe.html" class="menu-item"><span class="menu-item-icon">🛍️</span><div class="menu-item-text">Qué comprar<div class="menu-item-sub">Souvenirs y productos locales</div></div></a>
+  </div>
+
+  <div class="menu-cat">
+    <div class="menu-cat-title">💡 Tips</div>
+    <a href="noticias/como-llegar-santa-fe.html" class="menu-item"><span class="menu-item-icon">✈️</span><div class="menu-item-text">Cómo llegar<div class="menu-item-sub">Bus, avión, auto</div></div></a>
+    <a href="noticias/transporte-interno-santa-fe.html" class="menu-item"><span class="menu-item-icon">🚌</span><div class="menu-item-text">Transporte interno<div class="menu-item-sub">Moverse por la ciudad</div></div></a>
+    <a href="noticias/cuando-ir-santa-fe.html" class="menu-item"><span class="menu-item-icon">📅</span><div class="menu-item-text">Cuándo ir<div class="menu-item-sub">La mejor época</div></div></a>
+    <a href="noticias/cuantos-dias-santa-fe.html" class="menu-item"><span class="menu-item-icon">⏱️</span><div class="menu-item-text">Cuántos días quedarse<div class="menu-item-sub">Itinerarios sugeridos</div></div></a>
+    <a href="noticias/alcoholemia-santa-fe.html" class="menu-item"><span class="menu-item-icon">🚗</span><div class="menu-item-text">Alcoholemia cero<div class="menu-item-sub">Importante saberlo</div></div></a>
+  </div>
+
+  <div class="menu-cat">
+    <div class="menu-cat-title">🏨 Alojamiento</div>
+    <a href="noticias/hoteles-santa-fe.html" class="menu-item"><span class="menu-item-icon">🏨</span><div class="menu-item-text">Hoteles<div class="menu-item-sub">Por precio y zona</div></div></a>
+  </div>
+</div>
+
 <header class="header">
   <a href="#" class="logo-svg">
     <svg width="36" height="30" viewBox="0 0 38 32" fill="none">
@@ -253,7 +328,9 @@ body { font-family:'Plus Jakarta Sans',sans-serif; background:var(--arena); colo
       <div class="logo-sub">Guía Turística Digital</div>
     </div>
   </a>
-  <button class="btn-sm">📍 Capital</button>
+  <button class="hamburger" id="menuBtn" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
 </header>
 
 <div class="main">
@@ -622,6 +699,28 @@ document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
 
 // SMOOTH SCROLL
 document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});}}));
+
+// MENÚ HAMBURGUESA
+const menuBtn = document.getElementById('menuBtn');
+const menuDrawer = document.getElementById('menuDrawer');
+const menuOverlay = document.getElementById('menuOverlay');
+const menuClose = document.getElementById('menuClose');
+
+function openMenu() {
+  menuBtn.classList.add('open');
+  menuDrawer.classList.add('open');
+  menuOverlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeMenu() {
+  menuBtn.classList.remove('open');
+  menuDrawer.classList.remove('open');
+  menuOverlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+menuBtn.addEventListener('click', openMenu);
+menuClose.addEventListener('click', closeMenu);
+menuOverlay.addEventListener('click', closeMenu);
 </script>
 </body>
 </html>
