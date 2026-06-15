@@ -668,11 +668,15 @@ async function cargarEventos() {
   const c = document.getElementById('eventos-container');
   const meses = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
   try {
-    const r = await fetch('https://www.santafe.tur.ar/wp-json/wp/v2/posts?per_page=5&_fields=id,title,date,link&orderby=date&order=desc');
+    const hoyFecha = new Date();
+    hoyFecha.setHours(0,0,0,0);
+    const r = await fetch('https://www.santafe.tur.ar/wp-json/wp/v2/posts?per_page=20&_fields=id,title,date,link&orderby=date&order=desc');
     if(!r.ok) throw new Error();
     const posts = await r.json();
     if(!posts?.length) throw new Error();
-    c.innerHTML = posts.map(p => {
+    const futuros = posts.filter(p => new Date(p.date) >= hoyFecha);
+    if(!futuros.length) throw new Error();
+    c.innerHTML = futuros.slice(0,4).map(p => {
       const f = new Date(p.date);
       const titulo = (p.title?.rendered||'Evento').replace(/&#(\d+);/g,(_,n)=>String.fromCharCode(n)).replace(/<[^>]+>/g,'');
       return `<a href="${p.link}" target="_blank" class="evento-card">
