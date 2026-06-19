@@ -194,5 +194,46 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--arena);color:va
   <a href="../index.html#gastronomia" class="nav-item"><span class="nav-icon">🍽️</span><span class="nav-label">Comer</span></a>
   <a href="../index.html#tips" class="nav-item"><span class="nav-icon">💡</span><span class="nav-label">Tips</span></a>
 </nav>
+
+<!-- Galería de imágenes Google Custom Search -->
+<div class="galeria-imagenes" style="margin:2rem 0;">
+  <h3 style="font-family:'Playfair Display',serif;color:#0f3d26;margin-bottom:1rem;">Fotos del lugar</h3>
+  <div id="galeria-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:0.75rem;"></div>
+</div>
+<script>
+(function() {
+  var titulo = document.querySelector('.art-title') || document.querySelector('h1');
+  var query = titulo ? titulo.textContent.trim() : 'Santa Fe Argentina';
+  query = query + ' Santa Fe Argentina';
+  var url = 'https://www.googleapis.com/customsearch/v1?key=AIzaSyBXefNIPS3AJO-2sMmkXe2DiOSl_yISBI0&cx=8188dd1a84ecb4c08&q=' + encodeURIComponent(query) + '&searchType=image&num=6&imgSize=medium&safe=active';
+  fetch(url)
+    .then(function(r){ return r.json(); })
+    .then(function(data) {
+      var grid = document.getElementById('galeria-grid');
+      if (!data.items || !grid) return;
+      data.items.forEach(function(item) {
+        var a = document.createElement('a');
+        a.href = item.image.contextLink;
+        a.target = '_blank';
+        a.rel = 'noopener';
+        var img = document.createElement('img');
+        img.src = item.link;
+        img.alt = item.title;
+        img.loading = 'lazy';
+        img.style.cssText = 'width:100%;height:160px;object-fit:cover;border-radius:8px;display:block;';
+        img.onerror = function(){ this.parentElement.parentElement.removeChild(this.parentElement); };
+        a.appendChild(img);
+        grid.appendChild(a);
+      });
+      if (grid.children.length === 0) {
+        document.querySelector('.galeria-imagenes').style.display = 'none';
+      }
+    })
+    .catch(function(){ 
+      var g = document.querySelector('.galeria-imagenes');
+      if (g) g.style.display = 'none';
+    });
+})();
+</script>
 </body>
 </html>
