@@ -144,7 +144,7 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--arena);color:va
   var titulo = document.querySelector('.art-title') || document.querySelector('h1');
   var query = titulo ? titulo.textContent.trim() : 'Santa Fe Argentina';
   query = query + ' Santa Fe Argentina';
-  var url = 'https://www.googleapis.com/customsearch/v1?key=AIzaSyBXefNIPS3AJO-2sMmkXe2DiOSl_yISBI0&cx=8188dd1a84ecb4c08&q=' + encodeURIComponent(query) + '&searchType=image&num=6&imgSize=medium&safe=active';
+  var url = 'https://www.googleapis.com/customsearch/v1?key=AIzaSyBeP_TRMdLXoiDl965HtF3qofl9adSbQow&cx=8188dd1a84ecb4c08&q=' + encodeURIComponent(query) + '&searchType=image&num=6&imgSize=medium&safe=active';
   fetch(url)
     .then(function(r){ return r.json(); })
     .then(function(data) {
@@ -176,4 +176,5 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--arena);color:va
 </script>
 </body>
 </html>
+
 
