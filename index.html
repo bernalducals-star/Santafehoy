@@ -265,7 +265,16 @@ body { font-family:'Plus Jakarta Sans',sans-serif; background:var(--arena); colo
     <div class="menu-logo"><span class="sf">Santa Fe </span><span class="hoy">Hoy</span></div>
     <button class="menu-close" id="menuClose">✕</button>
   </div>
-
+<div class="menu-cat">
+  <a href="noticias/juegos-suramericanos-santa-fe-2026.html" class="menu-item"
+     style="background:var(--verde-oscuro);border:1px solid var(--dorado);margin:0 0 .3rem;">
+    <span class="menu-item-icon">🔥</span>
+    <div class="menu-item-text" style="color:#fff;">
+      Juegos Suramericanos
+      <div class="menu-item-sub" style="color:var(--dorado-claro);">Septiembre 2026 · El evento del año</div>
+    </div>
+  </a>
+</div>
   <div class="menu-cat">
     <div class="menu-cat-title">🗺️ Explorar</div>
     <a href="noticias/que-hacer-santa-fe.html" class="menu-item"><span class="menu-item-icon">🎯</span><div class="menu-item-text">Qué hacer en Santa Fe<div class="menu-item-sub">Actividades y atracciones</div></div></a>
@@ -377,7 +386,63 @@ body { font-family:'Plus Jakarta Sans',sans-serif; background:var(--arena); colo
     </div>
   </section>
 
-  <div class="divider"></div>
+<!-- ========================================================= -->
+<!-- BANNER JUEGOS SURAMERICANOS 2026                          -->
+<!-- Pegar dentro de <div class="main">, justo DESPUÉS de la   -->
+<!-- sección de Eventos (después del primer <div class="divider">) -->
+<!-- ========================================================= -->
+
+<style>
+@keyframes jsaFlick{0%,100%{transform:scaleY(1) translateY(0);opacity:1}50%{transform:scaleY(1.06) translateY(-2px);opacity:.92}}
+@keyframes jsaShine{0%{transform:translateX(-120%)}60%,100%{transform:translateX(320%)}}
+@keyframes jsaPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.8)}}
+.jsa-banner{display:block;position:relative;overflow:hidden;text-decoration:none;border-radius:16px;
+ background:var(--verde-oscuro);
+ background-image:radial-gradient(ellipse 90% 120% at 100% 0%,rgba(232,160,32,.28) 0%,transparent 55%),radial-gradient(ellipse 80% 100% at -10% 120%,rgba(26,92,58,.9) 0%,transparent 60%);
+ padding:1.5rem 1.4rem;border:1px solid rgba(232,160,32,.35);box-shadow:0 6px 28px rgba(15,61,38,.22)}
+.jsa-glow{position:absolute;top:0;left:0;width:60px;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.13),transparent);animation:jsaShine 5.5s ease-in-out infinite;pointer-events:none}
+.jsa-row{display:flex;align-items:center;gap:1.2rem;position:relative}
+.jsa-torch{flex-shrink:0;width:74px;height:96px}
+.jsa-flame{transform-origin:center bottom;animation:jsaFlick 2.4s ease-in-out infinite}
+.jsa-content{flex:1;min-width:0}
+.jsa-eyebrow{display:flex;align-items:center;gap:.5rem;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dorado-claro);font-weight:700;margin-bottom:.5rem}
+.jsa-dot{width:7px;height:7px;border-radius:50%;background:var(--dorado);animation:jsaPulse 1.6s ease-in-out infinite}
+.jsa-new{background:var(--dorado);color:var(--verde-oscuro);font-size:.55rem;font-weight:800;padding:.1rem .4rem;border-radius:100px;letter-spacing:.05em}
+.jsa-title{font-family:'Playfair Display',Georgia,serif;color:#fff;font-size:clamp(1.5rem,4.5vw,2rem);line-height:1.05;margin:0 0 .15rem}
+.jsa-title em{font-style:italic;color:var(--dorado-claro)}
+.jsa-sub{color:rgba(255,255,255,.62);font-size:.82rem;margin-bottom:.85rem;line-height:1.45}
+.jsa-cta{display:inline-flex;align-items:center;gap:.4rem;background:var(--dorado);color:var(--verde-oscuro);font-weight:700;font-size:.8rem;padding:.55rem 1.1rem;border-radius:100px}
+@media(max-width:520px){.jsa-torch{width:58px;height:76px}.jsa-row{gap:.9rem}}
+</style>
+
+<section class="section fade-up">
+  <a class="jsa-banner" href="noticias/juegos-suramericanos-santa-fe-2026.html">
+    <div class="jsa-glow"></div>
+    <div class="jsa-row">
+      <svg class="jsa-torch" viewBox="0 0 74 96" fill="none" aria-hidden="true">
+        <rect x="32" y="44" width="10" height="46" rx="3" fill="#c98a14"/>
+        <rect x="34" y="44" width="3.5" height="46" rx="2" fill="#f5c85a" opacity=".7"/>
+        <path d="M22 46 L52 46 L46 54 L28 54 Z" fill="#e8a020"/>
+        <path d="M24 47 L50 47 L47 51 L27 51 Z" fill="#f5c85a"/>
+        <g class="jsa-flame">
+          <path d="M37 4 C30 16 22 22 24 34 C25 43 31 47 37 47 C43 47 49 43 50 34 C51 26 46 24 44 18 C43 25 40 25 40 19 C40 13 41 9 37 4 Z" fill="#e8702a"/>
+          <path d="M37 14 C33 21 29 25 31 33 C32 39 34 43 37 43 C40 43 43 39 44 33 C45 27 41 26 40 21 C39 26 37 25 37 21 C37 18 38 16 37 14 Z" fill="#e8a020"/>
+          <path d="M37 24 C35 28 33 31 34 35 C35 39 36 41 37 41 C39 41 40 38 40 35 C41 31 38 30 38 27 C37 30 37 28 37 24 Z" fill="#f5c85a"/>
+        </g>
+      </svg>
+      <div class="jsa-content">
+        <div class="jsa-eyebrow"><span class="jsa-dot"></span> Evento del año <span class="jsa-new">NUEVO</span></div>
+        <h2 class="jsa-title">Juegos <em>Suramericanos</em> 2026</h2>
+        <div class="jsa-sub">Santa Fe es sede · 12 al 26 de septiembre · +4.000 atletas de 15 países. Todo lo que tenés que conocer.</div>
+        <span class="jsa-cta">Ver la guía completa →</span>
+      </div>
+    </div>
+  </a>
+</section>
+
+<div class="divider"></div>
+
+
 
   <!-- COSTALITORAL BANNER AFILIADO -->
   <section class="section fade-up">
