@@ -192,7 +192,7 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--arena);color:va
   var titulo = document.querySelector('.art-title') || document.querySelector('h1');
   var query = titulo ? titulo.textContent.trim() : 'Santa Fe Argentina';
   query = query + ' Santa Fe Argentina';
-  var url = 'https://www.googleapis.com/customsearch/v1?key=AIzaSyBeP_TRMdLXoiDl965HtF3qofl9adSbQow&cx=8188dd1a84ecb4c08&q=' + encodeURIComponent(query) + '&searchType=image&num=6&imgSize=medium&safe=active';
+  var url = 'https://sfh-images-proxy.totalcpa2021.workers.dev?q=' + encodeURIComponent(query);
   fetch(url)
     .then(function(r){ return r.json(); })
     .then(function(data) {
